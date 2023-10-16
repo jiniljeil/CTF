@@ -26,7 +26,6 @@
         <textarea id="reason" name="reason" placeholder="I'm in this picture and I don't like it">
 This note is...</textarea>
         <script>
-          <!-- bypass as proxy --> 
           let note = window.location.search.match(/note=([0-9A-Fa-f]{64})/)[1]
           link = document.getElementById("link");
           if(note){

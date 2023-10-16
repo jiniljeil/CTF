@@ -1,5 +1,6 @@
 # write-up
      
+## app.py
 ```python
 def init_db():
     db, cur = get_cursor()
@@ -195,5 +196,5 @@ text.substring을 활용하여 데이터의 일부를 전달하니 잘 전달되
 
 Payload를 조금 수정하여 전달해주면 아래와 같이 플래그를 획득할 수 있다.    
       
-<img src="public/images/flag.PNG" width="500px"/>   
+<img src="images/flag.PNG" width="500px"/>   
     
