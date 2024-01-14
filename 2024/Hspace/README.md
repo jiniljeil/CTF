@@ -8,6 +8,10 @@
       
 <img src="images/result.JPG">      
       
+## 후기    
+            
+NodeJS vm2 sandbox 취약점을 활용하여 RCE하는 sandbox 문제를 풀지 못한채로 끝나버려서 아쉬움이 남는 대회였다... (야간 근무를 가야했기에 ...)    
+
 ## 1. for_beginner    
 
 SSTI 취약점을 활용해 RCE 하는 문제였다.   
