@@ -1,0 +1,6 @@
+version: '3.0'
+services:
+  for_beginner:
+    build: ./src
+    ports:
+      - "1337:8080"

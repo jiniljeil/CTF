@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example</title>
+    <meta content="default-src 'self'; base-uri 'none'; script-src 'nonce-{{ nonce }}'
+    'unsafe-inline'; require-trusted-types-for 'script'; trusted-types default"
+          http-equiv="Content-Security-Policy">
+</head>
+<body>
+    <script nonce="{{ nonce }}">
+        const debug = () => {
+            const name = "{{ name | safe }}";
+            const code = "{{ code | safe }}";
+            console.log(`${name} : execute debug mode`)
+            eval(code);
+        }
+        if ({{ is_admin }}) {
+            debug();
+        }
+    </script>
+     <script nonce="{{ nonce }}">
+        (() => {
+            trustedTypes.createPolicy("default", {
+                createHTML(unsafe) {
+                    return unsafe
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;")
+                        .replace(/"/g, "&quot;")
+                        .replace(/"/g, "&#039;")
+                }
+            });
+        })();
+    </script>
+
+    <div id="title">
+    </div>
+    <div id="content">
+    </div>
+    <script nonce="{{ nonce }}">
+        const render = note => {
+            const titleDiv = document.getElementById("title");
+            const contentDiv = document.getElementById("content");
+            const title = document.createElement("h2");
+            title.innerHTML = note.title;
+            contentDiv.appendChild(title);
+
+            const content = document.createElement("p");
+            content.innerHTML = note.content;
+            contentDiv.appendChild(content);
+        };
+        window.addEventListener("load",() => { 
+            render({{ note | safe }});
+        });
+    </script>
+</body>
+</html>
