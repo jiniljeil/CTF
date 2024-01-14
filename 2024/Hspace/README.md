@@ -2,9 +2,13 @@
 
 ## 대회 일정
 **2024-01-13 10:00 ~ 20:00**
-### Writeup 
 
-## 1. for_beginner
+## 대회 결과   
+<img src="images/Top10-Users.png">      
+      
+<img src="images/result.JPG">      
+      
+## 1. for_beginner    
 
 SSTI 취약점을 활용해 RCE 하는 문제였다.   
     
