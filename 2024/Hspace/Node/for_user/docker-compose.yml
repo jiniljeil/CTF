@@ -1,8 +1,8 @@
 version: '3'
 services:
-  APIserver:
+  web-node:
     build:
-      context: ./app
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./Dockerfile
     ports: 
-      - "24912:8080"
+      - "8888:80"

