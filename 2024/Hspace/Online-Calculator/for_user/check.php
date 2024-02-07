@@ -20,13 +20,13 @@
   $message = addslashes($message);
   $user_answer = (float)($user_answer);
   $code = "
-<?php
-\$real_answer = $x $op $y;
-if (\$real_answer == $user_answer) {
-  echo '<script>alert(`$message`); location.href=`../index.php`;</script>';
-} else {
-  echo '<script>alert(`wrong`); location.href=`../index.php`;</script>';
-}
+    <?php
+    \$real_answer = $x $op $y;
+    if (\$real_answer == $user_answer) {
+      echo '<script>alert(`$message`); location.href=`../index.php`;</script>';
+    } else {
+      echo '<script>alert(`wrong`); location.href=`../index.php`;</script>';
+    }
   ";
 
   $fn = "calc/".sha1(random_bytes(16)).".php";

