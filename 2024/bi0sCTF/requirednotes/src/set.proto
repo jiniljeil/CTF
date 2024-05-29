@@ -1,0 +1,18 @@
+syntax = "proto2";
+message Something {}
+
+message Note {
+  optional string title = 1 [default="user"];
+  optional string content = 2;
+  option(a) = {
+    constructor {
+      prototype {
+        remoteAddress: "127.0.0.1";
+      }
+    }
+  }; 
+} 
+extend google.protobuf.NoteOptions {
+  repeated Note mo_rep_msg = 50002;
+}
+// option(a).constructor.prototype.fuck = "1.1.1.1"; // optional string author = 3 [default="user"];

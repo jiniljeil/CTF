@@ -1,0 +1,11 @@
+version: "3"
+name: web_randomsecret
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: for_user/Dockerfile
+    ports:
+      - "4000:4000"
+    restart: always

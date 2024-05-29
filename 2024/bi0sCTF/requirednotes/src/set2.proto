@@ -1,0 +1,8 @@
+syntax = "proto2";
+message Something {}
+
+message Note {
+  optional string title = 1 [default="user"];
+  optional string content = 2;
+  required string author = "<script>alert(1)</script>"; 
+} 

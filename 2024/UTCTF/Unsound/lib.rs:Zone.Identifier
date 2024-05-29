@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://utctf.live/
+HostUrl=https://s3.amazonaws.com/utctf24-ctfd/29d92b144da409530f9cb5dfbdf0e6cd/lib.rs?response-content-disposition=attachment%3B%20filename%3Dlib.rs&response-cache-control=max-age%3D3600&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA2MPNFQBQ63JOKF4C%2F20240330%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240330T050000Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=012ce0f1145baa46c2a9364ee7da6b60c2127a1536426508bed6237db32029b6

@@ -1,0 +1,13 @@
+services:
+  app:
+    build:
+      context: ../
+      dockerfile: deploy/Dockerfile
+      args:
+        - FLAG=LINECTF{dummy}
+        - LOGFILE=.log
+    environment:
+      - PORT=3000
+    ports:
+      - "0.0.0.0:3000:3000"
+    init: true

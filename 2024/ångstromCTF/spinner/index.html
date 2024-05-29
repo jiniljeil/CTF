@@ -1,0 +1,54 @@
+const state = {
+dragging: false,
+value: 0,
+total: 0,
+flagged: false,
+}
+
+const message = async () => {
+if (state.flagged) return
+const element = document.querySelector('.message')
+element.textContent = Math.floor(state.total / 360)
+
+if (state.total >= 10_000 * 360) {
+state.flagged = true
+const response = await fetch('/falg', { method: 'POST' })
+element.textContent = await response.text()
+}
+}
+message()
+
+const draw = () => {
+const spinner = document.querySelector('.spinner')
+const degrees = state.value
+spinner.style.transform = `rotate(${degrees}deg)`
+}
+
+const down = () => {
+state.dragging = true
+}
+
+const move = (e) => {
+if (!state.dragging) return
+
+const spinner = document.querySelector('.spinner')
+const center = {
+x: spinner.offsetLeft + spinner.offsetWidth / 2,
+y: spinner.offsetTop + spinner.offsetHeight / 2,
+}
+const dy = e.clientY - center.y
+const dx = e.clientX - center.x
+const angle = (Math.atan2(dy, dx) * 180) / Math.PI
+
+const value = angle < 0 ? 360 + angle : angle const change=value - state.value if (0 < change && change < 180)
+    state.total +=change if (0> change && change > -180) state.total += change
+    if (change > 180) state.total -= 360 - change
+    if (change < -180) state.total +=360 + change state.value=value draw() message() } const up=()=> {
+        state.dragging = false
+        }
+
+        document.querySelector('.handle').addEventListener('mousedown', down)
+        window.addEventListener('mousemove', move)
+        window.addEventListener('mouseup', up)
+        window.addEventListener('blur', up)
+        window.addEventListener('mouseleave', up)
