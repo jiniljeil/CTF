@@ -1,4 +1,0 @@
-[ZoneTransfer]
-ZoneId=3
-ReferrerUrl=https://utctf.live/
-HostUrl=https://s3.amazonaws.com/utctf24-ctfd/3c2867dc98f6740c8c9e2d0a35b1cb49/merger.zip?response-content-disposition=attachment%3B%20filename%3Dmerger.zip&response-cache-control=max-age%3D3600&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA2MPNFQBQ63JOKF4C%2F20240330%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240330T050000Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=2347e2e15b2d58e2691370371de4abc4e25adc8b1007b201ddcebdb621b42e4f
