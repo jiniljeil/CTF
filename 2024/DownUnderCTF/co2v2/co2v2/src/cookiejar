@@ -1,0 +1,8 @@
+[
+  {
+    "domain": "co2v2:1337",
+    "name": "admin-cookie",
+    "value": "DUCTF{testflag}",
+    "httponly": false
+  }
+]
