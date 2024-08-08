@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: \\wsl.localhost\Ubuntu\home\ubuntu\CTF\CCE\precious\user-MVC.Views.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{33230DE5-5DEE-4BE1-BA88-E86210585524}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>MVC.Views</AssemblyName>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <RootNamespace>MVC.Pages</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MVC">
+      <HintPath>lib\user-MVC.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections" />
+    <Reference Include="System.Diagnostics.Debug" />
+    <Reference Include="System.Linq.Expressions" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Security.Claims" />
+    <Reference Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AspNetCore\Areas_Identity_Pages__ViewStart.cs" />
+    <Compile Include="Pages_About.cs" />
+    <Compile Include="Pages_Contact.cs" />
+    <Compile Include="Pages_Error.cs" />
+    <Compile Include="Pages_Index.cs" />
+    <Compile Include="Pages_Privacy.cs" />
+    <Compile Include="Pages__ViewImports.cs" />
+    <Compile Include="Pages__ViewStart.cs" />
+    <Compile Include="Shared\Pages_Shared__CookieConsentPartial.cs" />
+    <Compile Include="Shared\Pages_Shared__Layout.cs" />
+    <Compile Include="Shared\Pages_Shared__LoginPartial.cs" />
+    <Compile Include="Shared\Pages_Shared__ValidationScriptsPartial.cs" />
+    <Compile Include="FileUpload\Pages_FileUpload_Index.cs" />
+    <Compile Include="FileUpload\Pages_FileUpload_UploadFailed.cs" />
+    <Compile Include="FileUpload\Pages_FileUpload_UploadSuccess.cs" />
+    <Compile Include="Contacts\Pages_Contacts_Create.cs" />
+    <Compile Include="Contacts\Pages_Contacts_Delete.cs" />
+    <Compile Include="Contacts\Pages_Contacts_Details.cs" />
+    <Compile Include="Contacts\Pages_Contacts_Edit.cs" />
+    <Compile Include="Contacts\Pages_Contacts_Index.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,17 @@
+services:
+  db:
+    image: mariadb
+    restart: always
+    platform: linux/amd64
+    container_name: ccend-db
+    environment:
+      MARIADB_ROOT_PASSWORD: veryveryhardpassword
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+
+  prob:
+    container_name: ccend-prob
+    ports:
+      - 37221:80
+    build:
+      context: ./prob

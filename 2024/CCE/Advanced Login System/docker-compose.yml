@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  web:
+    build:
+      context: ./app
+    ports:
+      - 5555:80
+    links:
+      - cce_mysql
+  cce_mysql:
+    build:
+      context: ./mysql
+    environment:
+      MYSQL_DATABASE: "cce"
+      MYSQL_USER: "cce"
+      MYSQL_PASSWORD: "cce"
+      MYSQL_ROOT_PASSWORD: "cce"
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password

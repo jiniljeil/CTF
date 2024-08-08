@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: \\wsl.localhost\Ubuntu\home\ubuntu\CTF\CCE\precious\user-MVC.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6930FBF6-7B21-4202-A980-68DCBC8293D3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>MVC</AssemblyName>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <RootNamespace>MVC</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Collections" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.Annotations" />
+    <Reference Include="System.Console" />
+    <Reference Include="System.Diagnostics.Debug" />
+    <Reference Include="System.IO.FileSystem" />
+    <Reference Include="System.Linq" />
+    <Reference Include="System.Linq.Expressions" />
+    <Reference Include="System.Linq.Queryable" />
+    <Reference Include="System.Net.Primitives" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.Extensions" />
+    <Reference Include="System.Security.Claims" />
+    <Reference Include="System.Security.Cryptography.Algorithms" />
+    <Reference Include="System.Security.Cryptography.Primitives" />
+    <Reference Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AesEncryption.cs" />
+    <Compile Include="LayoutViewModel.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Pages\AboutModel.cs" />
+    <Compile Include="Pages\ContactModel.cs" />
+    <Compile Include="Pages\ErrorModel.cs" />
+    <Compile Include="Pages\IndexModel.cs" />
+    <Compile Include="Pages\PrivacyModel.cs" />
+    <Compile Include="Pages\FileUpload\IndexModel.cs" />
+    <Compile Include="Pages\Contacts\CreateModel.cs" />
+    <Compile Include="Pages\Contacts\DeleteModel.cs" />
+    <Compile Include="Pages\Contacts\DetailsModel.cs" />
+    <Compile Include="Pages\Contacts\DI_BasePageModel.cs" />
+    <Compile Include="Pages\Contacts\EditModel.cs" />
+    <Compile Include="Pages\Contacts\IndexModel.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\ContactStatus.cs" />
+    <Compile Include="Models\FileUploadViewModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Migrations\Init.cs" />
+    <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
+    <Compile Include="Logs\Log.cs" />
+    <Compile Include="Helpers\UserExtensions.cs" />
+    <Compile Include="Data\ApplicationDbContext.cs" />
+    <Compile Include="Data\SeedData.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
+    <Compile Include="Authorization\ContactAdministratorsAuthorizationHandler.cs" />
+    <Compile Include="Authorization\ContactIsOwnerAuthorizationHandler.cs" />
+    <Compile Include="Authorization\ContactManagerAuthorizationHandler.cs" />
+    <Compile Include="Authorization\ContactOperations.cs" />
+    <Compile Include="Authorization\Constants.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

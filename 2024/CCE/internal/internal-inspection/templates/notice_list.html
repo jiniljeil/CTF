@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/bulma.min.css">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col content">
+                <h1>공지사항</h1>
+            </div>
+            <div class="col-auto">
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="제목으로 검색" aria-label="Search" id="searchInput" name="q" value="{{ search_query }}">
+                    <button class="btn btn-outline-primary btn-sm" type="button" id="searchButton">Search</button>
+                </form>
+            </div>
+        </div>
+        <ul class="list-group" id="noticeList">
+            {% if no_data %}
+                <li class="list-group-item">No Data</li>
+            {% else %}
+                {% if filtered_notices %}
+                    {% for notice in filtered_notices %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="/notice/{{ notice.id }}">{{ notice.title }}</a>
+                        <span class="badge bg-secondary">{{ notice.date }}</span>
+                    </li>
+                    {% endfor %}
+                {% else %}
+                    {% for notice in notices %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="/notice/{{ notice.id }}">{{ notice.title }}</a>
+                        <span class="badge bg-secondary">{{ notice.date }}</span>
+                    </li>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        </ul>
+    </div>
+
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function() {
+            let searchText = document.getElementById('searchInput').value.toLowerCase();
+            let notices = document.querySelectorAll('#noticeList .list-group-item');
+            let hasResults = false;
+            for (let notice of notices) {
+                let title = notice.querySelector('a').textContent.toLowerCase();
+                if (title.includes(searchText)) {
+                    notice.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    notice.style.display = 'none';
+                }
+            }
+            if (!hasResults) {
+                document.getElementById('noticeList').innerHTML = '<li class="list-group-item">No Data</li>';
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  mainapp:
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "8580:5000"
+    restart: always
