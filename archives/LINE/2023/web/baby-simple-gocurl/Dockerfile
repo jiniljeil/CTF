@@ -9,9 +9,9 @@ RUN apt-get -qq update && \
   apt-get -qq -y install htop net-tools vim curl 
 
 ENV GO111MODULE=on \
-    CGO_ENABLED=0 \
-    GOOS=linux \
-    GOARCH=amd64
+  CGO_ENABLED=0 \
+  GOOS=linux \
+  GOARCH=amd64
 
 COPY ./baby-simple-gocurl "${GOCURL}"
 COPY start.sh "${GOCURL}/start.sh"

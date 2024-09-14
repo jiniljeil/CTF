@@ -80,7 +80,7 @@ def memo_view(uid):
 def memo_handle(uid):
     try:
         params = check_params(request.get_json())
-        params = request.get_json()
+        params = request.get_json() # bypass
         if not params:
             abort(400)
 

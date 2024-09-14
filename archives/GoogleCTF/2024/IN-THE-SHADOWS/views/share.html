@@ -1,0 +1,28 @@
+{{ template "header.html" . }}
+
+<script type="module" src="js/share.js" nonce="{{ .Nonce }}"></script>
+
+  <div class="flex flex-col gap-2">
+    <h1 class="text-7xl text-red-600 font-['Jacquard_24'] text-center pb-4">
+      👻 shared message... 👻
+    </h1>
+
+    <untrusted-content
+      class="bg-black block p-4 border border-blue-200 font-[Lugrasimo] text-gray-200"
+      html="{{ .HTML }}"
+    ></untrusted-content>
+    <h2 class="text-5xl text-red-600 font-['Jacquard_24']">Share with admin</h2>
+    <p class="leading-6 text-justify tracking-widest">
+      If your heart deems this message worthy, allow it a greater purpose. Press
+      the button below, and your sentiment shall drift toward the ever-present
+      admin who oversees this space.
+    </p>
+    <button
+      class="text-4xl text-center text-red-600 bg-blue-300 p-2 rounded shadow font-['Jacquard_24'] shadow-blue-200 transition-all hover:bg-blue-400"
+      id="share-with-admin"
+      target="_blank"
+    >
+      Share with admin
+    </button>
+  </div>
+</body>

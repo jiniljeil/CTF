@@ -1,0 +1,27 @@
+version: '3.0'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+  proxy:
+    build:
+      context: .
+      dockerfile: ./proxy/Dockerfile
+    restart: always
+    links:
+      - web
+    ports:
+      - "80:80"
+  db:
+    image: mysql:8.0
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_DATABASE: cce2023
+      MYSQL_USER: cce2023
+      MYSQL_PASSWORD: cce2023!@#!
+      MYSQL_ROOT_PASSWORD: cce2023!@#!
+    networks:
+      - default
+    restart: always

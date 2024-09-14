@@ -42,7 +42,7 @@ func main() {
 				return redirectChecker(req, via)
 			},
 		}
-
+		
 		reqUrl := strings.ToLower(c.Query("url"))
 		reqHeaderKey := c.Query("header_key")
 		reqHeaderValue := c.Query("header_value")

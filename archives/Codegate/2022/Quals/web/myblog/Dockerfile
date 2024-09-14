@@ -16,7 +16,7 @@ COPY src/ROOT/ /usr/local/tomcat/webapps/ROOT/
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-RUN echo 'flag=codegate2022{md5(flag)}' >> /usr/local/tomcat/conf/catalina.properties
+RUN echo 'flag=codegate2022{bcbbc8d6c8f7ea1924ee108f38cc000f}' >> /usr/local/tomcat/conf/catalina.properties
 
 CMD ["/start.sh"]
 

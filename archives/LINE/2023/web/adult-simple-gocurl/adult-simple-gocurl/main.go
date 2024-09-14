@@ -50,13 +50,13 @@ func main() {
 		fmt.Println("[+] " + reqUrl + ", " + reqIP + ", " + reqHeaderKey + ", " + reqHeaderValue)
 
 		if strings.Contains(reqUrl, "flag") || strings.Contains(reqUrl, "curl") || strings.Contains(reqUrl, "%") {
-			c.JSON(http.StatusBadRequest, gin.H{"message": "Something wrong"})
+			c.JSON(http.StatusBadRequest, gin.H{"message": "Something wrong1"})
 			return
 		}
 
 		req, err := http.NewRequest("GET", reqUrl, nil)
 		if err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"message": "Something wrong"})
+			c.JSON(http.StatusBadRequest, gin.H{"message": "Something wrong2"})
 			return
 		}
 
@@ -66,7 +66,7 @@ func main() {
 
 		resp, err := client.Do(req)
 		if err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"message": "Something wrong"})
+			c.JSON(http.StatusBadRequest, gin.H{"message": "Something wrong3"})
 			return
 		}
 
@@ -74,7 +74,7 @@ func main() {
 
 		bodyText, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"message": "Something wrong"})
+			c.JSON(http.StatusBadRequest, gin.H{"message": "Something wrong4"})
 			return
 		}
 		statusText := resp.Status

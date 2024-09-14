@@ -78,7 +78,7 @@ const generateRandomString = (length) => {
 }
 
 // unified send to reduce code lines
-const sendResponse = (res, message, status=200) => {
+const sendResponse = (res, message, status = 200) => {
     res.status(status)
     res.write(message)
     res.send()
@@ -116,7 +116,7 @@ app.get("/api/stream/:url", (req, res) => {
 
         // prevent memory overload
         redisCache.dbsize((err, result) => {
-            if(result >= 256){
+            if (result >= 256) {
                 redisCache.flushdb()
             }
         })
@@ -124,19 +124,19 @@ app.get("/api/stream/:url", (req, res) => {
         // preventing DNS attacks, etc.
         getIPAddress(domain)
             .then(ipAddress => {
-                if(!url.startsWith("http://") && !url.startsWith("https://")){
+                if (!url.startsWith("http://") && !url.startsWith("https://")) {
                     url = STATIC_HOST.concat(url).replace("..", "").replace("%2e%2e", "").replace("%2e.", "").replace(".%2e", "")
-                }else{
-                    if(isInternalIP(ipAddress)) return sendResponse(res, "No Hack!", 500)
+                } else {
+                    if (isInternalIP(ipAddress)) return sendResponse(res, "No Hack!", 500)
                 }
 
                 // redis || axios
                 redisCache.get(url.split("?")[0], (err, result) => {
-                    if (err || !result){
+                    if (err || !result) {
                         axios
                             .get(url, { responseType: "arraybuffer", timeout: 3000 })
                             .then(response => {
-                                if (!allowedContentTypes.includes(response.headers["content-type"])){
+                                if (!allowedContentTypes.includes(response.headers["content-type"])) {
                                     return sendResponse(res, "Not a valid music file", 500)
                                 }
                                 if (response.data.byteLength >= 1024 * 1024 * 3) {
@@ -149,7 +149,7 @@ app.get("/api/stream/:url", (req, res) => {
                             .catch(err => {
                                 return sendResponse(res, "No Hack!", 500)
                             })
-                    }else{
+                    } else {
                         return sendResponse(res, Buffer.from(result, "hex"))
                     }
                 })
@@ -164,17 +164,17 @@ app.get("/api/stream/:url", (req, res) => {
 
 // inquiry
 app.get("/api/inquiry", (req, res) => {
-    if(!req.session.lastValue || !req.session.lastLength){
+    if (!req.session.lastValue || !req.session.lastLength) {
         req.session.lastLength = DIFFICULTY
         req.session.lastValue = generateRandomString(DIFFICULTY)
         return sendResponse(res, `${req.session.lastLength}/${req.session.lastValue}`)
     }
 
-    if(!req.query.url || typeof req.query.url !== "string"){
+    if (!req.query.url || typeof req.query.url !== "string") {
         return sendResponse(res, "No Hack!", 500)
     }
 
-    if(!req.query.checksum || getLastCharacterMD5((req.query.checksum || ''), DIFFICULTY) !== req.session.lastValue){
+    if (!req.query.checksum || getLastCharacterMD5((req.query.checksum || ''), DIFFICULTY) !== req.session.lastValue) {
         req.session.lastLength = DIFFICULTY
         req.session.lastValue = generateRandomString(DIFFICULTY)
         return sendResponse(res, `${req.session.lastLength}/${req.session.lastValue}`, 500)
@@ -193,7 +193,7 @@ app.post("/api/messages", (req, res) => {
     if (!req.cookies["SECRET"] || req.cookies["SECRET"] !== SECRET) {
         return sendResponse(res, "Nope", 403)
     }
-    return res.render("admin", {...id})
+    return res.render("admin", { ...id })
 })
 
 // get flag
@@ -214,7 +214,7 @@ app.get("*", (req, res) => {
 const start = async () => {
     try {
         await app.listen(APP_PORT, APP_HOST)
-    } catch(err) {
+    } catch (err) {
         app.log.error(err)
         process.exit(1)
     }

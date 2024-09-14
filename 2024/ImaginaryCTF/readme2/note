@@ -1,0 +1,5 @@
+https://developer.mozilla.org/ko/docs/Web/API/URL/URL
+
+<?php
+        header("Location: http://127.0.0.1:3000/flag.txt");
+?>

