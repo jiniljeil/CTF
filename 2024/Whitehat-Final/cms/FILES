@@ -1,0 +1,16 @@
+filter.php:// if (is_array($_FILES)) {
+filter.php://     foreach ($_FILES as $k => $v) {
+filter.php://         if(is_array($_FILES)){
+filter.php://             foreach($_FILES[$k] as $k2 => $v2){
+filter.php://                 // $_FILES[$k][$k2]=addslashes($v2);
+filter.php://             // $_FILES[$k][$k2]=addslashes($v);
+filter.php:// if (is_array($_FILES)) {
+filter.php://     foreach ($_FILES as $k => $v) {
+filter.php://                 // $_FILES[$k][$k2] = addslashes($v2);
+users/editapi.php:if(!empty($_FILES) && isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK){
+util/filefunc.php:    $file_name = basename($_FILES["file"]["name"]);
+util/filefunc.php:        $check = getimagesize($_FILES["file"]["tmp_name"]);
+util/filefunc.php:    if ($_FILES["file"]["size"] > 5000000) {
+util/filefunc.php:        if (move_uploaded_file($_FILES["file"]["tmp_name"], $newFileName)) {
+util/filefunc.php:            // echo "The file ". htmlspecialchars( basename( $_FILES["file"]["name"])). " has been uploaded.";
+util/fileclass.php:// $result = $uploader->upload($_FILES["file"]);

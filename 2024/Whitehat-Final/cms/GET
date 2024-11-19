@@ -1,0 +1,17 @@
+board/listapi.php:$bname=$_GET['bname'];
+board/oneapi.php:$bname=$_GET['bname'];
+board/oneapi.php:$idx=$_GET['idx'];
+filter.php:if( is_array($_GET) ) {
+filter.php:    foreach($_GET as $k => $v) {
+filter.php:        if( is_array($_GET[$k]) ) {
+filter.php:            foreach($_GET[$k] as $k2 => $v2) {
+filter.php:                $_GET[$k][$k2] = addslashes($v2);
+filter.php:            $_GET[$k] = addslashes($v);
+filter.php:if(isset($_GET['user'])){
+filter.php:    $_GET['user']=strandint($_GET['user']);
+filter.php:if(isset($_GET['idx'])){
+filter.php:    $_GET['idx']=intandint($_GET['idx']);
+filter.php:if(isset($_GET['bname'])){
+filter.php:    $_GET['bname']=xssfilter($_GET['bname']);
+filter.php:if(isset($_GET['toname'])){
+filter.php:    $_GET['toname']=xssfilter($_GET['toname']);

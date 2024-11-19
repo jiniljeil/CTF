@@ -1,0 +1,16 @@
+app/util/curl.php:        curl_setopt($this->ch, CURLOPT_POSTFIELDS, http_build_query($data));
+app/board/sql.php:    $ret=$con->query($sql);
+app/board/sql.php:    return $con->query($sql);
+app/board/sql.php:    $ret=$con->query($sql);
+app/users/sql.php:    return $con->query($sql);
+app/users/sql.php:    return $con->query($sql);
+app/users/sql.php:    return $con->query($sql);
+app/users/sql.php:    return $con->query($sql);
+app/dbcon.php:    public function query($sql){
+app/dbcon.php:        $result = $this->mysqli->query($sql);
+app/dbcon.php:        $result = $this->query($sql);
+app/dbcon.php:        $result = $this->query($sql);
+payload.php:    public function query($sql){
+payload.php:        $result = $this->mysqli->query($sql);
+payload.php:        $result = $this->query($sql);
+payload.php:        $result = $this->query($sql);
