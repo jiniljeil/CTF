@@ -9,7 +9,8 @@ public class ConfigC2 {
     public static String addr;
     public static MyApp app;
     public static ArrayList<String> body = new ArrayList<>();
-    public static ArrayList<String> head = new ArrayList<>(Arrays.asList(new String[]{"PUT ", " HTTP/1.1\r\nHost: ", "\r\nConnection: close\r\n\r\n"}));
+    public static ArrayList<String> head = new ArrayList<>(
+            Arrays.asList(new String[] { "PUT ", " HTTP/1.1\r\nHost: ", "\r\nConnection: close\r\n\r\n" }));
     public static String port;
     public static ArrayList<String> urllist = new ArrayList<>();
 

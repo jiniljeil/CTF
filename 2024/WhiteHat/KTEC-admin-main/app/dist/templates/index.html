@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Korea Technology</title>
+
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/font-awesome.min.css') }}"
+        />
+
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static', filename='css/animate.min.css') }}"
+        />
+
+        <link
+            href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+            rel="stylesheet"
+        />
+        <link
+            type="text/css"
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/carousel.css') }}"
+        />
+        <link
+            href="{{ url_for('static', filename='css/style.css') }}"
+            rel="stylesheet"
+        />
+        <link
+            href="{{ url_for('static', filename='css/responsive.css') }}"
+            rel="stylesheet"
+        />
+    </head>
+
+    <body data-spy="scroll" data-target="#header">
+        <section id="header">
+            <div class="header-area">
+                <div
+                    class="header_menu text-center"
+                    data-spy="affix"
+                    data-offset-top="50"
+                    id="nav"
+                >
+                    <div class="container">
+                        <nav class="navbar navbar-default zero_mp">
+                            <div class="navbar-header">
+                                <button
+                                    type="button"
+                                    class="navbar-toggle collapsed"
+                                    data-toggle="collapse"
+                                    data-target="#bs-example-navbar-collapse-1"
+                                    aria-expanded="false"
+                                >
+                                    <span class="sr-only"
+                                        >Toggle navigation</span
+                                    >
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a
+                                    class="navbar-brand custom_navbar-brand"
+                                    href="#"
+                                    ><img
+                                        src="{{ url_for('static', filename='img/logo.png') }}"
+                                        width="155px"
+                                        height="45px"
+                                /></a>
+                            </div>
+
+                            <div
+                                class="collapse navbar-collapse zero_mp"
+                                id="bs-example-navbar-collapse-1"
+                            >
+                                <ul
+                                    class="nav navbar-nav navbar-right main_menu"
+                                >
+                                    <li class="active">
+                                        <a href="#"
+                                            >Home
+                                            <span class="sr-only"
+                                                >(current)</span
+                                            ></a
+                                        >
+                                    </li>
+                                    <li><a href="#welcome">WELCOME</a></li>
+                                    <li><a href="#counter">ACHIEVEMENT</a></li>
+                                    <li>
+                                        <a href="#testimonial">ABOUT</a>
+                                    </li>
+                                    <li><a href="#contact">CONTACT US</a></li>
+                                    <!-- <li><a href="{{ url_for('admin.admin') }}">ADMIN</a></li> -->
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slider">
+            <div
+                id="carousel-example-generic"
+                class="carousel slide carousel-fade"
+                data-ride="carousel"
+                data-interval="3000"
+            >
+                <ol class="carousel-indicators">
+                    <li
+                        data-target="#carousel-example-generic"
+                        data-slide-to="0"
+                        class="active"
+                    ></li>
+                    <li
+                        data-target="#carousel-example-generic"
+                        data-slide-to="1"
+                    ></li>
+                    <li
+                        data-target="#carousel-example-generic"
+                        data-slide-to="2"
+                    ></li>
+                </ol>
+
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <div class="slider_overlay">
+                            <img
+                                src="{{ url_for('static', filename='img/img1.jpg') }}"
+                                width="100%"
+                                alt="..."
+                            />
+                            <div class="carousel-caption">
+                                <div class="slider_text">
+                                    <h3>혁신적인 기술로 세상을 변화시키는</h3>
+                                    <h2>Korea Technology</h2>
+                                    <p>
+                                        [KTEC]는 미래를 선도하는 혁신적인 기술
+                                        개발을 통해 고객의 비즈니스 성장을
+                                        지원하는 기술 전문 기업입니다.
+                                    </p>
+                                    <a href="" class="custom_btn">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="slider_overlay">
+                            <img
+                                src="{{ url_for('static', filename='img/img2.jpg') }}"
+                                width="100%"
+                                alt="..."
+                            />
+                            <div class="carousel-caption">
+                                <div class="slider_text">
+                                    <h3>혁신적인 기술로 세상을 변화시키는</h3>
+                                    <h2>Korea Technology</h2>
+                                    <p>
+                                        [KTEC]는 미래를 선도하는 혁신적인 기술
+                                        개발을 통해 고객의 비즈니스 성장을
+                                        지원하는 기술 전문 기업입니다.
+                                    </p>
+                                    <a href="" class="custom_btn">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="slider_overlay">
+                            <img
+                                src="{{ url_for('static', filename='img/img3.jpg') }}"
+                                width="100%"
+                                alt="..."
+                            />
+                            <div class="carousel-caption">
+                                <div class="slider_text">
+                                    <h3>혁신적인 기술로 세상을 변화시키는</h3>
+                                    <h2>Korea Technology</h2>
+                                    <p>
+                                        [KTEC]는 미래를 선도하는 혁신적인 기술
+                                        개발을 통해 고객의 비즈니스 성장을
+                                        지원하는 기술 전문 기업입니다.
+                                    </p>
+                                    <a href="" class="custom_btn">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="welcome">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="wel_header">
+                            <h2>사업 소개</h2>
+                            <p>
+                                우리는 첨단 기술 연구와 개발을 통해 산업 전반에
+                                걸쳐 최상의 솔루션을 제공하고 있으며, 빠르게
+                                변화하는 디지털 환경 속에서 고객이 경쟁력을
+                                유지할 수 있도록 돕고 있습니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="item">
+                            <div class="single_item">
+                                <div class="item_list">
+                                    <div class="welcome_icon">
+                                        <i class="fa fa-leaf"></i>
+                                    </div>
+                                    <h4>혁신</h4>
+                                    <p>
+                                        우리는 고객의 문제를 해결하고 새로운
+                                        기회를 창출하기 위해 지속적으로 기술을
+                                        혁신합니다. 최신 기술 트렌드와 AI, IoT,
+                                        클라우드 컴퓨팅과 같은 기술을 활용하여
+                                        고객 맞춤형 솔루션을 제공합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="item">
+                            <div class="single_item">
+                                <div class="item_list">
+                                    <div class="welcome_icon">
+                                        <i class="fa fa-refresh"></i>
+                                    </div>
+                                    <h4>품질과 신뢰성</h4>
+                                    <p>
+                                        우리의 모든 제품과 서비스는 엄격한 품질
+                                        관리를 거쳐 고객의 요구를 충족시키고,
+                                        신뢰할 수 있는 기술 지원을 통해 비즈니스
+                                        운영의 연속성을 보장합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="item">
+                            <div class="single_item">
+                                <div class="item_list">
+                                    <div class="welcome_icon">
+                                        <i class="fa fa-cog"></i>
+                                    </div>
+                                    <h4>고객 중심</h4>
+                                    <p>
+                                        고객의 성공이 곧 우리의 성공입니다.
+                                        고객의 목표를 이해하고 이를 달성하기
+                                        위해 최적화된 기술 솔루션을 제안하여
+                                        지속적인 파트너십을 구축합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="counter">
+            <div class="counter_img_overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="counter_header">
+                                <h2>성과</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="counter_item text-center">
+                                <div class="sigle_counter_item">
+                                    <img
+                                        src="{{ url_for('static', filename='img/tree.png') }}"
+                                        alt=""
+                                    />
+                                    <div class="counter_text">
+                                        <span class="counter">500</span>
+                                        <p>협약 기업 횟수</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="counter_item text-center">
+                                <div class="sigle_counter_item">
+                                    <img
+                                        src="{{ url_for('static', filename='img/hand.png') }}"
+                                        alt=""
+                                    />
+                                    <div class="counter_text">
+                                        <span class="counter">15</span>%
+                                        <p>투자 비율 증가</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="counter_item text-center">
+                                <div class="sigle_counter_item">
+                                    <img
+                                        src="{{ url_for('static', filename='img/tuhnder.png') }}"
+                                        alt=""
+                                    />
+                                    <div class="counter_text">
+                                        <span class="counter">35</span>%
+                                        <p>R&D 투자 증가</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="counter_item text-center">
+                                <div class="sigle_counter_item">
+                                    <img
+                                        src="{{ url_for('static', filename='img/cloud.png') }}"
+                                        alt=""
+                                    />
+                                    <div class="counter_text">
+                                        <span class="counter">98</span>%
+                                        <p>고객 만족도</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonial">
+            <div class="testimonial_overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="testimonial_header text-center">
+                                <h2>사업 소개</h2>
+                                <p>
+                                    각종 솔루션을 제공하여 환경과 안전문제를
+                                    해결해 드립니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <section id="carousel">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <div
+                                        class="carousel slide"
+                                        id="fade-quote-carousel"
+                                        data-ride="carousel"
+                                        data-interval="3000"
+                                    >
+                                        <ol class="carousel-indicators">
+                                            <li
+                                                data-target="#fade-quote-carousel"
+                                                data-slide-to="0"
+                                                class="active"
+                                            ></li>
+                                            <li
+                                                data-target="#fade-quote-carousel"
+                                                data-slide-to="1"
+                                            ></li>
+                                        </ol>
+
+                                        <div class="carousel-inner">
+                                            <div class="active item">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div
+                                                            class="profile-circle"
+                                                        ></div>
+                                                        <div
+                                                            class="testimonial_content"
+                                                        >
+                                                            <i
+                                                                class="fa fa-quote-left"
+                                                            ></i>
+                                                            <p>
+                                                                KTEC은
+                                                                인공지능(AI)과
+                                                                머신러닝을
+                                                                기반으로 한
+                                                                혁신적인
+                                                                솔루션을
+                                                                제공합니다.
+                                                                우리의 AI 기술은
+                                                                데이터 분석과
+                                                                예측을 통해
+                                                                비즈니스 운영을
+                                                                최적화하고,
+                                                                의사결정을 돕는
+                                                                데 중요한 역할을
+                                                                하고 있습니다.
+                                                                AI는 제조,
+                                                                헬스케어, 금융
+                                                                등 다양한
+                                                                산업에서
+                                                                적용되어 고객의
+                                                                생산성을 크게
+                                                                향상시킵니다.
+                                                            </p>
+                                                        </div>
+                                                        <div
+                                                            class="testimonial_author"
+                                                        >
+                                                            <h5>
+                                                                인공지능(AI) 및
+                                                                머신러닝
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div
+                                                            class="profile-circle"
+                                                        ></div>
+                                                        <div
+                                                            class="testimonial_content"
+                                                        >
+                                                            <i
+                                                                class="fa fa-quote-left"
+                                                            ></i>
+                                                            <p>
+                                                                디지털 전환을
+                                                                위한 클라우드
+                                                                인프라 구축은
+                                                                KTEC의 핵심 역량
+                                                                중 하나입니다.
+                                                                우리는 기업이
+                                                                비용 효율적인
+                                                                클라우드 환경을
+                                                                통해 운영을
+                                                                최적화하고,
+                                                                비즈니스 확장에
+                                                                필요한 유연성을
+                                                                제공하도록
+                                                                지원합니다.
+                                                                안전한 데이터
+                                                                관리와 신속한
+                                                                확장을 가능하게
+                                                                하는 클라우드
+                                                                서비스는 모든
+                                                                규모의 기업에
+                                                                필수적인
+                                                                자산입니다.
+                                                            </p>
+                                                        </div>
+                                                        <div
+                                                            class="testimonial_author"
+                                                        >
+                                                            <h5>
+                                                                클라우드 솔루션
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="item">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div
+                                                            class="profile-circle"
+                                                        ></div>
+                                                        <div
+                                                            class="testimonial_content"
+                                                        >
+                                                            <i
+                                                                class="fa fa-quote-left"
+                                                            ></i>
+                                                            <p>
+                                                                사물인터넷(IoT)
+                                                                기술을 통해
+                                                                다양한
+                                                                디바이스와
+                                                                데이터를
+                                                                연결하여
+                                                                스마트한 산업
+                                                                환경을
+                                                                제공합니다.
+                                                                KTEC의 IoT
+                                                                솔루션은 산업
+                                                                자동화, 스마트
+                                                                팜, 스마트 시티
+                                                                등 다양한
+                                                                분야에서
+                                                                효율적인 운영을
+                                                                가능하게 하며,
+                                                                실시간 데이터를
+                                                                활용한 운영
+                                                                최적화와 원격
+                                                                모니터링을
+                                                                지원합니다.
+                                                            </p>
+                                                        </div>
+                                                        <div
+                                                            class="testimonial_author"
+                                                        >
+                                                            <h5>
+                                                                사물인터넷(IoT)
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div
+                                                            class="profile-circle"
+                                                        ></div>
+                                                        <div
+                                                            class="testimonial_content"
+                                                        >
+                                                            <i
+                                                                class="fa fa-quote-left"
+                                                            ></i>
+                                                            <p>
+                                                                급변하는 디지털
+                                                                환경 속에서
+                                                                사이버 보안은 그
+                                                                어느 때보다
+                                                                중요해졌습니다.
+                                                                KTEC은 최첨단
+                                                                사이버 보안
+                                                                솔루션을 통해
+                                                                고객의 데이터를
+                                                                안전하게
+                                                                보호하고, 기업의
+                                                                IT 인프라를
+                                                                강력한
+                                                                방어체계로
+                                                                지킵니다. 보안
+                                                                위협을
+                                                                실시간으로
+                                                                탐지하고,
+                                                                효과적인 대응을
+                                                                통해 보안 사고를
+                                                                미연에
+                                                                방지합니다.
+                                                            </p>
+                                                        </div>
+                                                        <div
+                                                            class="testimonial_author"
+                                                        >
+                                                            <h5>
+                                                                사이버 보안
+                                                                솔루션
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="colmd-12">
+                        <div class="contact_area text-center">
+                            <h3>고객지원</h3>
+                            <p>질문이 있으십니까? 의견이 있으십니까?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="office">
+                            <div class="title">
+                                <h5>회사 정보</h5>
+                            </div>
+                            <div class="office_location">
+                                <div class="address">
+                                    <i class="fa fa-map-marker"
+                                        ><span>South Korea, Seoul</span></i
+                                    >
+                                </div>
+                                <div class="phone">
+                                    <i class="fa fa-phone"
+                                        ><span>+ 000000-000000</span></i
+                                    >
+                                </div>
+                                <div class="email">
+                                    <i class="fa fa-envelope"
+                                        ><span>example@gmail.com</span></i
+                                    >
+                                </div>
+                                <div id="map">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d7524.782561782349!2d126.97560557727837!3d37.53665138942665!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sko!2skr!4v1727251341961!5m2!1sko!2skr"
+                                        width="100%"
+                                        height="250px"
+                                        style="border: 0"
+                                        allowfullscreen=""
+                                        loading="lazy"
+                                        referrerpolicy="no-referrer-when-downgrade"
+                                    ></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="msg">
+                            <div class="msg_title">
+                                <h5>문의하기</h5>
+                            </div>
+                            <div class="form_area">
+                                <div
+                                    class="contact-form wow fadeIn animated"
+                                    data-wow-offset="10"
+                                    data-wow-duration="1.5s"
+                                >
+                                    <div id="message"></div>
+                                    <form
+                                        action="#"
+                                        class="form-horizontal contact-1"
+                                        role="form"
+                                        name="contactform"
+                                        id="contactform"
+                                    >
+                                        <div class="form-group">
+                                            <div class="col-sm-6">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="name"
+                                                    id="name"
+                                                    placeholder="이름"
+                                                />
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="email"
+                                                    id="email"
+                                                    placeholder="이메일"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <input
+                                                    type="subject"
+                                                    class="form-control"
+                                                    id="subject"
+                                                    placeholder="주제"
+                                                />
+                                                <div class="text_area">
+                                                    <textarea
+                                                        name="contact-message"
+                                                        id="msg"
+                                                        class="form-control"
+                                                        cols="30"
+                                                        rows="8"
+                                                        placeholder="메세지"
+                                                    ></textarea>
+                                                </div>
+                                                <button
+                                                    type="submit"
+                                                    class="btn custom-btn"
+                                                    data-loading-text="Loading..."
+                                                >
+                                                    제출하기
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="footer">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-6">
+                        <div class="copyright">
+                            <p>KTEC Co., Ltd.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="designer">
+                            <p>Copyright © 2024. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+        <script src="{{ url_for('static', filename='js/jquery-1.12.3.min.js') }}"></script>
+
+        <script src="{{ url_for('static', filename='js/waypoints.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.counterup.min.js') }}"></script>
+
+        <script>
+            $('.counter').counterUp({
+                delay: 10,
+                time: 1000,
+            });
+        </script>
+        <script src="{{ url_for('static', filename='js/backtotop.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.localScroll.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.scrollTo.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    </body>
+</html>

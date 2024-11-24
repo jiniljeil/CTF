@@ -29,7 +29,8 @@ r = s.put( # login
 )
 cookies = r.cookies.get_dict()
 print(cookies) 
-r = s.put(
+
+r = s.put( # access admin page
     f"{url}/L0jU3lgokNLUQ7W1nppJ/XXnNWBoD9DWidSaR0aVVFmD8sNeiLz",
     cookies=cookies
 )

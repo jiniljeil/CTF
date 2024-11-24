@@ -1,0 +1,12 @@
+services:
+  villa:
+    build: .
+    platform: linux/amd64
+    image: ${REGISTRY}easy-villa
+    restart: unless-stopped
+    ports:
+      - 17171:8080
+    cpus: 1
+    mem_limit: 256M
+    memswap_limit: 256M
+    stop_grace_period: 3s

