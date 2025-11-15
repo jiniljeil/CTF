@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  in-the-shadows:
+    build: .
+    platform: linux/amd64
+    ports:
+      - "5001:5001"
+    restart: unless-stopped

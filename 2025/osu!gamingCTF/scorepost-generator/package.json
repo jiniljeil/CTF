@@ -1,0 +1,19 @@
+{
+  "name": "scorepost-generator",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "gm": "^1.25.1",
+    "jszip": "^3.10.1",
+    "multer": "^2.0.2",
+    "osu-classes": "^3.1.0",
+    "osu-parsers": "^4.1.7"
+  }
+}

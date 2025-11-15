@@ -1,0 +1,30 @@
+{% include 'components.header' %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Organization</h1>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="org_table" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>email</th>
+                        <th>birthday</th>
+                        <th>phone_number</th>
+                        <th>rrn</th>
+                        <th>salary</th>
+                        <th>position</th>
+                        <th>department</th>
+                        <th>datetime</th>
+                    </tr>
+                    </thead>
+                    <tbody id="org_data">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'components.footer' %}

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{{ title }}</title>
+
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    {#    <link href="{{ asset('stylesheets/bootstrap.min.css') }}" rel="stylesheet"> #}
+    <link href="{{ asset('stylesheets/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link rel="icon" href="{{ asset('images/favicorn.ico') }}">
+</head>
+
+<body id="page-top">
+<div id="wrapper">
+    {% if role is same as(1) %}
+    <input type="hidden" id="role" value="user">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-laugh-wink"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">Novition</div>
+        </a>
+
+        <hr class="sidebar-divider my-0">
+
+        <li class="nav-item active">
+            <a class="nav-link" href="/dashboard">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+
+        <hr class="sidebar-divider">
+
+        <div class="sidebar-heading">
+            Backoffice
+        </div>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/organization">
+                <i class="fas fa-fw fa-sitemap"></i>
+                <span>Organization</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/mypage">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>My Page</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/mail">
+                <i class="fas fa-fw fa-envelope"></i>
+                <span>My Mail</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/qna">
+                <i class="fas fa-fw fa-question"></i>
+                <span>QnA board</span>
+            </a>
+        </li>
+
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+    </ul>
+
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600">{{ user_info['name'] }}</span>
+                            <img class="img-profile rounded-circle" src="{{ asset('images/undraw_profile.svg') }}">
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/mypage"><i class="fas fa-fw fa-cog" aria-hidden="true"></i><span>My Page</span></a></li>
+                            <li><a class="dropdown-item" id="logout"><i class="fas fa-fw fa-sign-out-alt" aria-hidden="true"></i><span>Logout</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            {% endif %}
+            {% if role is same as(2) %}
+            <input type="hidden" id="role" value="admin">
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/dashboard">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-laugh-wink"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3">Novition</div>
+                </a>
+
+                <hr class="sidebar-divider my-0">
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="/admin/dashboard">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span></a>
+                </li>
+
+                <hr class="sidebar-divider">
+
+                <div class="sidebar-heading">
+                    Backoffice
+                </div>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/organization">
+                        <i class="fas fa-fw fa-sitemap"></i>
+                        <span>Organization</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/mypage">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>My Page</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/mail">
+                        <i class="fas fa-fw fa-envelope"></i>
+                        <span>My Mail</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/qna">
+                        <i class="fas fa-fw fa-question"></i>
+                        <span>QnA board</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider d-none d-md-block">
+
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+            </ul>
+
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600">{{ user_info['name'] }}</span>
+                                    <img class="img-profile rounded-circle" src="{{ asset('images/undraw_profile.svg') }}">
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="/admin/mypage"><i class="fas fa-fw fa-cog" aria-hidden="true"></i><span>My Page</span></a></li>
+                                    <li><a class="dropdown-item" id="logout"><i class="fas fa-fw fa-sign-out-alt" aria-hidden="true"></i><span>Logout</span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    {% endif %}

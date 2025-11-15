@@ -1,0 +1,2 @@
+tag_conditions = " OR ".join(["json_extract(tags, '$') LIKE '%\"" + tag + "\"%'" for tag in tags])
+query += " AND (" + tag_conditions + ")"

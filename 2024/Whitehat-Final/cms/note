@@ -1,0 +1,15 @@
+http://43.203.200.185:10001/uploads/0c079ce53f4531a9322af267e41c3689.jpg
+
+$user=$_SESSION['idx'];
+$response='';
+$row=selectUserIdx($dbcon,$user);
+
+function selectUserIdx($con,$idx){
+    global $TABLE_NAME;
+    $sql = "SELECT * FROM $TABLE_NAME WHERE idx='$idx'";
+    return $con->fetchOne($sql);
+}
+
+app/users/profileapi.php:    if(file_exists($row['filepath'])){ # TARGET 
+
+',filepath=phar://./../uploads/0c079ce53f4531a9322af267e41c3689.jpg 

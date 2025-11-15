@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CTF JS Safe</title>
+</head>
+<body>
+  <h1>🔐 JS Safe Unlock</h1>
+  <button onclick="store('This_is_the_hidden_flag_or_secret')">📦 Store Secret</button>
+  <button onclick="unlock('CTF{0BACHagAgHHe0Ptx0FHW!@cuzHepHvA12?ceHFF_cWb_aHe}')">🔓 Unlock Safe</button>
+  <p id="output"></p>
+
+  <script>
+  function anti(debug) {
+    window.step = 0;
+    window.cﾠ= true;
+    window.success = false;
+
+    window.r = function(s) {
+      return s.toString().replace(/[\x21-\x7E]/g, c =>
+        String.fromCharCode(33 + ((c.charCodeAt() - 33 + 47) % 94)));
+    }
+
+    window.k = function(s) {
+      return s.toString().replace(/[a-z]/gi, c => {
+        const code = c.charCodeAt();
+        return String.fromCharCode((code & 95) < 78 ? code + 13 : code - 13);
+      });
+    }
+
+    window.check = function() {
+      Function`[0].step; if (window.step == 0 || check.toString().length !== 914) while(true) debugger;`
+      try {
+        window.step = 0;
+        [0].step;
+        const flag = (window.flag || '').split('');
+        let i = 1337, j = 0;
+        let pool = `?o>\`Wn0o0U0N?05o0ps}q0|mt\`ne\`us&400_pn0ss_mph_0\`5`;
+        pool = r(pool).split('');
+        const double = Function.call`window.step *= 2`;
+
+        while (!window.success) {
+          j = ((i || 1) * 16807 + window.step) % 2147483647;
+          if (flag[0] == pool[j % pool.length] && (window.step < 1000000)) {
+            i = j;
+            flag.shift();
+            pool.splice(j % pool.length, 1);
+            double();
+            if (!pool.length && !flag.length) window.success = true;
+          }
+        }
+      } catch(e) {}
+    }
+
+    function instrument() {}
+    function instrumentPrototype() {}
+    function instrumentPrototypeOfPrototype() {}
+
+    // Minimal instrumentation to satisfy obfuscation
+    [Array, Array.prototype, String.prototype, Math, console, Reflect]
+      .map(o => Object.values(Object.getOwnPropertyDescriptors(o))
+      .map(x => x.value || x.get).filter(x => x instanceof Function))
+      .flat().concat(check, eval).forEach(() => {});
+  }
+
+  function unlock(flag) {
+    const match = /^CTF{([0-9a-zA-Z_@!?-]+)}$/.exec(flag);
+    if (!match) return alert("Invalid flag format.");
+    window.flag = match[1];
+    check();
+    if (!window.success) return alert("❌ Incorrect flag!");
+    window.password = Array.from(window.flag).map(c => c.charCodeAt());
+    const encrypted = JSON.parse(localStorage.content || '[]');
+    const decrypted = encrypted.map((c,i) => c ^ password[i % password.length]).map(String.fromCharCode).join('');
+    document.getElementById("output").innerText = "✅ JS Safe opened! Content: " + decrypted;
+  }
+
+  function store(secret) {
+    const plaintext = Array.from(secret).map(c => c.charCodeAt());
+    const password = Array.from("0BACHagAgHHe0Ptx0FHW!@cuzHepHvA12?ceHFF_cWb_aHe").map(c => c.charCodeAt());
+    localStorage.content = JSON.stringify(plaintext.map((c,i) => c ^ password[i % password.length]));
+    alert("✅ Secret stored in localStorage!");
+  }
+
+  // Call anti to initialize
+  anti(console.log);
+  </script>
+</body>
+</html>

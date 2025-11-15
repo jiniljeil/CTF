@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Service</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #222;
+            color: #fff;
+        }
+
+        .chat-room {
+            max-width: 800px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #333;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .chat-messages {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        #user-dropdown {
+            max-width: 200px;
+        }
+
+        .logout-button {
+            float: right;
+        }
+
+    </style>
+</head>
+
+<body onload="loadUserList()">
+    <button id="logout-button" class="btn btn-danger logout-button" onclick="logoff()">log out</button>
+
+    <div class="container">
+    <div class="row">
+        <div class="col">
+            <h3>Chatting Service (Soft-Opening)</h3>
+            <div id="message-container">
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p>Welcome, {{.Id}}!!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="chat-rooms-container">
+        <button class="btn btn-primary" id="add-chat-room-btn" onclick="isValidRoom()">Add a Chatting Room</button>
+        <div class="container" id="chat-rooms-new-container"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        window.onload = function() {
+            const userId = "{{.Id}}";
+            if (!userId.trim()){
+                window.location.href="/";
+            } else {
+
+                reloader();
+                loadMessage();
+            }
+        };
+        
+        function createCookie(name,value,days) {
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 *1000));
+                var expires = "; expires=" + date.toGMTString();
+            } else {
+                var expires = "";
+            }
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
+
+        function deleteCookie(name) {
+            console.log('[+] Cookie : ' + name);
+            createCookie(name,"",-1);
+        }
+
+        function logoff() {
+            console.log("[+] logoff function entrance");
+            fetch('/api/logout', { method: 'GET' })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response has an issue');
+                }
+                deleteCookie('UserName');
+                console.log("[+] logoff function will be moved to main page");
+                window.location.href="/";
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+        }
+        
+        function reloader() {
+            const reloadURL = "/api/reload";
+            fetch(reloadURL) 
+            .then(response => {
+                if(!response.ok) {
+                    throw new Error('Network response has an issue');
+                }
+                return response.json();
+            })
+            .then(roomIDs => {
+                console.log("Reloaded room IDs:", roomIDs);
+                
+                if (roomIDs === null) {
+                    return;
+                }
+                
+                const chatRoomsContainer = document.getElementById("chat-rooms-new-container");
+                chatRoomsContainer.innerHTML = "";
+
+                roomIDs.forEach(roomID => {
+                    console.log("RELOAD ROOM SO NO NEED TO ADD DATA on DB")
+                    addChatRoom(roomID, 1);
+                    console.log("BYE");
+                });
+                
+            })
+            .catch(error => {
+                console.error('[BUTTON?] There has been a problem with your fetch operation:', error);
+            });
+        }
+
+        function deleteChatRoom(chatRoomIndex) {
+            console.log("Deleting chat room with index:", chatRoomIndex);
+
+            const deleteChatURL = "/api/deleteRoom";
+            const data = {
+                username: "{{.Id}}",
+                chatRoomIndex: chatRoomIndex
+            };
+            const requestOption = {
+                    method : 'POST',
+                    headers : {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                };
+
+            let chatRoomsHTML = localStorage.getItem('chatRooms');
+            const chatRoomIndexToDelete = chatRoomIndex;
+
+            const chatRoomToDelete = document.querySelector(`.chat-room[data-index='${chatRoomIndexToDelete}']`);
+            console.log("chatRoomToDelete:", chatRoomToDelete);
+
+            if (chatRoomToDelete) {
+                chatRoomToDelete.remove();
+
+                const regex = new RegExp(`<div class="chat-room" data-index="${chatRoomIndexToDelete}">.+?</div>`, 'g');
+                chatRoomsHTML = chatRoomsHTML.replace(regex, '');
+
+                localStorage.setItem('chatRooms', chatRoomsHTML);
+            }
+            
+
+            fetch(deleteChatURL, requestOption)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response has an issue');
+                }
+                return response.json();
+            })
+            .then(result => {
+                console.log("Return result value= " + result.returnVal);
+                if (result.returnVal === 1) {
+                    console.log(`The chat room ${chatRoomIndex} will be removed`);
+
+                    const chatRoomToDelete = document.querySelector(`.chat-room[data-index='${chatRoomIndex}']`);
+                    if (chatRoomToDelete) {
+                        chatRoomToDelete.remove();
+                        
+                        let chatRoomsHTML = localStorage.getItem('chatRooms');
+                        const regex = new RegExp(`<div class="chat-room" data-index="${chatRoomIndex}">.+?</div>`, 'g');
+                        chatRoomsHTML = chatRoomsHTML.replace(regex, '');
+                        localStorage.setItem('chatRooms', chatRoomsHTML);
+                    }
+                    
+                } else {
+                    console.error('Failed to delete the message');
+                }
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+        }
+
+        function addChatRoom(chatRoomCount, isReloadFlag) {
+            const addChatRoomURL = "/api/addRoom";
+            const chatRoomsContainer = document.getElementById("chat-rooms-new-container");
+                        
+            const chatRoomDiv = document.createElement("div");
+            chatRoomDiv.className = "col chat-room";
+            chatRoomDiv.setAttribute("data-index", chatRoomCount);
+            chatRoomDiv.innerHTML = `
+                <span class="chat-room-label">ChatRoom ${chatRoomCount}</span>
+                <div class="chat-messages">
+                    <ul id="message-list-${chatRoomCount}" class="list-group list-group-flush"></ul>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" id="message-input-${chatRoomCount}" class="form-control" placeholder="Input Message" autocomplete="off">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" onclick="sendMessage(${chatRoomCount})">Send</button>
+                        <button class="btn btn-danger" type="button" onclick="deleteChatRoom(${chatRoomCount})">Remove</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <select id="user-dropdown-${chatRoomCount}" class="custom-select">
+                            <option value="">FIXING...</option>
+                            <!-- TODO ... -->
+                            <!-- Adding Dropdown Options -->
+                        </select>
+                    </div>
+                </div>
+            `;
+            
+            chatRoomsContainer.appendChild(chatRoomDiv);
+            const chatRoomsHTML = chatRoomsContainer.innerHTML;
+            localStorage.setItem('chatRooms', chatRoomsHTML);
+            
+            console.log("room count :" + chatRoomCount);
+            console.log("room count type:" + (typeof chatRoomCount));
+            console.log("isReloadFlag " + (typeof isReloadFlag));
+            console.log("isReloadFlag = " + isReloadFlag);    
+            const data = {
+                username: "{{.Id}}",
+                chatRoomIndex: parseInt(chatRoomCount),
+                isReloadFlag: isReloadFlag
+            };
+            const requestOption = {
+                method : 'POST',
+                headers : {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            };
+            fetch(addChatRoomURL, requestOption)
+            .then(response => { 
+                if(!response.ok){
+                    throw new Error('Network response has an issue');
+                }
+                console.log('addChatRoom setting is succeed');
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+        }
+
+        function hiddenRoom() {
+            const hiddenRoomURL = "/api/hidden";
+            fetch(hiddenRoomURL)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        }
+
+        function isValidRoom() {
+            const validationRoomURL = "/api/validate";
+
+            const data = {
+                username: "{{.Id}}",
+
+            }
+            const requestOption = {
+                method : 'POST',
+                headers : {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            };
+            fetch(validationRoomURL, requestOption)
+            .then(response => {
+                if(!response.ok) {
+                    throw new Error('Network response has an issue');
+                }
+                console.log('Check the validation room index');
+                return response.json()
+            })
+            .then(result => {
+                if (result.returnVal === 2) {
+                    console.log(`Access Hidden Room`);
+                    hiddenRoom(); 
+                }
+                if (result.returnVal === 1) {
+                    console.log(`Can Add ChatRoom`);
+                    addChatRoom(result.chatRoomCount,0);
+                }
+                if (result.returnVal === -1) {
+                    console.error('Failed to Add ChatRoom');
+                    alert('Cannot Add Anymore');
+                }
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+        }
+        function sendMessage(chatRoomIndex) {
+            const messageInput = document.getElementById(`message-input-${chatRoomIndex}`).value;
+            const sendMessageURL = "/api/sendMessage";
+            
+            const data = {
+                username: "{{.Id}}",
+                message: messageInput,
+                chatRoomIndex: chatRoomIndex
+            };
+
+            const requestOption = {
+                method : 'POST',
+                headers : {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            };
+
+            fetch(sendMessageURL, requestOption)
+            .then(response => { 
+                if(!response.ok){
+                    throw new Error('Network response has an issue');
+                }
+                console.log('Message sent seccessfully');
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+        }
+
+        function loadMessage() {
+            const loadMessageURL = "/api/loadMessage";
+
+            $.ajax({
+                url: loadMessageURL,
+                type: "POST",
+                dataType: "json",
+                success: function(response) {
+                    displayMessage(response);
+                },
+                error: function(error) {
+                    console.error("Error loading messages", error);
+                }
+
+            });
+        }
+
+        function displayMessage(messages) {
+            console.log("access the displayMessage function");
+            const messageContainer = document.getElementById("message-container");
+            messageContainer.innerHTML = "";
+            message.forEach(function(messages) {
+                const messageElement = document.createElement("div");
+                messageElement.classList.add("message");
+                messageElement.innerHTML = `<p>${message.message}</p><small>${message.created_at}</small>`;
+
+                messageContainer.appendChild(messageElement);
+            });
+            console.log("Finish")
+        }
+        
+        function loadUserList() {
+            const userlistURL = "/api/userlist";
+
+            $.ajax({
+                url: userlistURL,
+                type: "GET",
+                dataType: "json",
+                success: function(response) {
+                    const userList = response;
+                    const dropdowns = document.querySelectorAll("[id^='user-dropdown-']");
+
+                    dropdowns.forEach(function(dropdown, index) {
+                        dropdown.innerHTML = "";
+
+                        const defaultOption = document.createElement("option");
+                        defaultOption.value = "user";
+                        defaultOption.text = "Select User";
+                        dropdown.appendChild(defaultOption);
+
+                        userList.forEach(function(username) {
+                            const option = document.createElement("option");
+                            option.text = username;
+                            console.log("username : " + username);
+                            dropdown.appendChild(option);
+                        });
+                    });
+                },
+                error: function(error) {
+                    console.error("Error loading user list:", error);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

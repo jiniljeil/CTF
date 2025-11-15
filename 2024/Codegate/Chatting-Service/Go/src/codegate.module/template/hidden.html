@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CHAT SERVICE</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+        *
+        {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Quicksand', sans-serif;
+        }
+        body 
+        {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          background: #000;
+        }
+        section 
+        {
+          position: absolute;
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 2px;
+          flex-wrap: wrap;
+          overflow: hidden;
+        }
+        section::before 
+        {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(#000,#0f0,#000);
+          animation: animate 5s linear infinite;
+        }
+        @keyframes animate 
+        {
+          0%
+          {
+            transform: translateY(-100%);
+          }
+          100%
+          {
+            transform: translateY(100%);
+          }
+        }
+
+        section .hidden
+        {
+          position: absolute;
+          width: 400px;
+          background: #222;  
+          z-index: 1000;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 40px;
+          border-radius: 4px;
+          box-shadow: 0 15px 35px rgba(0,0,0,9);
+        }
+        section .hidden .content 
+        {
+          position: relative;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          gap: 40px;
+        }
+        section .hidden .content h2 
+        {
+          font-size: 2em;
+          color: #0f0;
+          text-transform: uppercase;
+        }
+        section .hidden .content .form 
+        {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
+        }
+        section .hidden .content .form .inputBox
+        {
+          position: relative;
+          width: 100%;
+        }
+        section .hidden .content .form .inputBox input 
+        {
+          position: relative;
+          width: 100%;
+          background: #333;
+          border: none;
+          outline: none;
+          padding: 25px 10px 7.5px;
+          border-radius: 4px;
+          color: #fff;
+          font-weight: 500;
+          font-size: 1em;
+        }
+        section .hidden .content .form .inputBox i 
+        {
+          position: absolute;
+          left: 0;
+          padding: 15px 10px;
+          font-style: normal;
+          color: #aaa;
+          transition: 0.5s;
+          pointer-events: none;
+        }
+        .hidden .content .form .inputBox input:focus ~ i,
+        .hidden .content .form .inputBox input:valid ~ i
+        {
+          transform: translateY(-7.5px);
+          font-size: 0.8em;
+          color: #fff;
+        }
+        .hidden .content .form .links 
+        {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .hidden .content .form .links p 
+        {
+          color: white;
+        }
+        .hidden .content .form .links a 
+        {
+          color: #fff;
+          text-decoration: none;
+        }
+        .hidden .content .form .links a:nth-child(2)
+        {
+          color: #0f0;
+          font-weight: 600;
+        }
+        .hidden .content .form .inputBox input[type="submit"]
+        {
+          padding: 10px;
+          background: #0f0;
+          color: #000;
+          font-weight: 600;
+          font-size: 1.35em;
+          letter-spacing: 0.05em;
+          cursor: pointer;
+        }
+        input[type="submit"]:active
+        {
+          opacity: 0.6;
+        }
+        .hidden .content .form .result {
+            color: #fff;
+            font-size: 1em;
+            max-width: 300px;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="hidden">
+            <div class="content">
+                <h2>LINUX COMMAND TEST</h2>
+                <form id="debugForm">
+                    <div class="form">
+                        <div class="inputBox">
+                            <input type="text" id="username" name="username" required> <i>Username</i>
+                        </div>
+                        <div class="inputBox">
+                            <input type="text" id="session" name="session" required> <i>Session</i>
+                        </div>
+                        <div class="inputBox">
+                            <input type="text" id="command" name="command" required> <i>Command</i>
+                        </div>
+                        <div class="inputBox">
+                            <input type="submit" value="Test">
+                        </div>
+                    </div>
+                </form>
+                <label class="result" for="result"></label>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+            $('#debugForm').submit(function(event) {
+                event.preventDefault();
+
+                const username = $('#username').val();
+                const session = $('#session').val();
+                const command = $('#command').val();
+
+                $.ajax({
+                    url: 'http://127.0.0.1:5000/login',
+                    method: 'POST',
+                    data: {
+                        username: username,
+                        session: session,
+                        command: command
+                    },
+                    success: function(response) {
+                        $('.result').css('color', '#ffffff'); 
+                        $('.result').text(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Request failed. Status:', xhr.status);
+                    }
+                });
+            });
+    </script>
+</body>
+
+</html>

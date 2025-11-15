@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  sqli_php:
+    build:
+      context: ./app
+    ports:
+      - 2023:80
+    links:
+      - sqli_mysql
+  sqli_mysql:
+    build:
+      context: ./mysql
+    environment:
+      MYSQL_DATABASE: "hspace"
+      MYSQL_USER: "hspace"
+      MYSQL_PASSWORD: "hspace1234!"
+      MYSQL_ROOT_PASSWORD: "hspace"
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password

@@ -1,0 +1,166 @@
+http://example.com
+Screenshot taken: tmp_qd_6f8u.png 
+/images/tmp_qd_6f8u.png
+
+
+
+dr-xr-xr-x   2 root   blog    0 Sep 13 01:39 attr
+dr-xr-xr-x   2 root   blog    0 Sep 13 01:44 fdinfo
+dr-xr-xr-x  56 root   blog    0 Sep 13 01:44 net
+dr-xr-xr-x   3 root   blog    0 Sep 13 01:39 task
+
+Linux c-d355-c9822t-l3398-rocket-7774488866-j7sdq 6.6.97+
+
+DNS_SERVER_IP: 34.118.224.10
+DOCKER_REGISTRY_MIRROR_URL: https://mirror.gcr.io
+ELASTICSEARCH_LOGGING_REPLICAS: "1"
+ENABLE_AUTH_PROVIDER_GCP: "true"
+ENABLE_CLUSTER_DNS: "true"
+ENABLE_CLUSTER_LOGGING: "false"
+ENABLE_CLUSTER_MONITORING: none
+ENABLE_CLUSTER_REGISTRY: "false"
+ENABLE_CLUSTER_UI: "true"
+ENABLE_CONNTRACK_EXEMPT_HC: "true"
+ENABLE_CONTAINERD_METRICS: "true"
+ENABLE_L7_LOADBALANCING: glbc
+ENABLE_LATEST_NPD: "true"
+ENABLE_METADATA_AGENT: ""
+ENABLE_METRICS_SERVER: "true"
+ENABLE_NODE_BFQ_IO_SCHEDULER: "true"
+ENABLE_NODE_LOGGING: "false"
+ENABLE_NODE_PROBLEM_DETECTOR: standalone
+ENABLE_NODE_REGISTRATION_CHECKER: "true"
+ENABLE_NODELOCAL_DNS: "false"
+ENABLE_SHM_HEALTHCHECK_BINARIES: "true"
+ENABLE_SYSCTL_TUNING: "true"
+ENV_TIMESTAMP: "2025-07-19T05:55:38+00:00"
+EXTRA_DOCKER_OPTS: --insecure-registry 10.0.0.0/8
+EXTRA_POD_SYSCTLS: net.ipv6.conf.all.disable_ipv6=1,net.ipv6.conf.default.disable_ipv6=1
+FEATURE_GATES: RotateKubeletServerCertificate=true,ExecProbeTimeout=false
+FLUENTD_CONTAINER_RUNTIME_SERVICE: containerd
+GVISOR_HOST_SETTINGS: enforce
+GVISOR_METRIC_SERVER: 127.0.0.1:9115
+HEAPSTER_USE_NEW_STACKDRIVER_RESOURCES: "true"
+HEAPSTER_USE_OLD_STACKDRIVER_RESOURCES: "false"
+HPA_USE_REST_CLIENTS: "true"
+INSTANCE_PREFIX: gke-challs-v2-cb08256b
+KUBE_ADDON_REGISTRY: k8s.gcr.io
+KUBE_CLUSTER_DNS: 34.118.224.10
+KUBE_DOCKER_REGISTRY: europe-west3-artifactregistry.gcr.io/gke-release/gke-release
+KUBE_MANIFESTS_TAR_HASH: 5ff9081941a3ca2691b37868d5daf8943cff710266ec7ee99528cbc2796d272d5aeff8978bbd3b46404dcf22b75891c0bc7e55a8d180bfd3e521cd5f0c1b10ff
+KUBE_MANIFESTS_TAR_URL: https://storage.googleapis.com/gke-release-eu/kubernetes/release/v1.33.4-gke.1172000/kubernetes-manifests.tar.gz,https://storage.googleapis.com/gke-release/kubernetes/release/v1.33.4-gke.1172000/kubernetes-manifests.tar.gz,https://storage.googleapis.com/gke-release-asia/kubernetes/release/v1.33.4-gke.1172000/kubernetes-manifests.tar.gz
+KUBE_PROXY_TOKEN: fh1XUoGDNP7dfqMs9bM6tZ4irGFjkrFQ5U-MV3HTWCY=
+KUBELET_ARGS: --v=2 --cloud-provider=external --experimental-mounter-path=/home/kubernetes/containerized_mounter/mounter
+  --cert-dir=/var/lib/kubelet/pki/ --kubeconfig=/var/lib/kubelet/kubeconfig --image-credential-provider-config=/etc/srv/kubernetes/cri_auth_config.yaml
+  --image-credential-provider-bin-dir=/home/kubernetes/bin --max-pods=110 --node-labels=cloud.google.com/gke-boot-disk=pd-ssd,cloud.google.com/gke-container-runtime=containerd,cloud.google.com/gke-cpu-scaling-level=4,cloud.google.com/gke-logging-variant=DEFAULT,cloud.google.com/gke-max-pods-per-node=110,cloud.google.com/gke-memory-gb-scaling-level=15,cloud.google.com/gke-nodepool=default-pool-v2,cloud.google.com/gke-os-distribution=cos,cloud.google.com/gke-provisioning=standard,cloud.google.com/gke-stack-type=IPV4,cloud.google.com/machine-family=n1,cloud.google.com/private-node=false,node.kubernetes.io/masq-agent-ds-ready=true,projectcalico.org/ds-ready=true
+  --volume-plugin-dir=/home/kubernetes/flexvolume --bootstrap-kubeconfig=/var/lib/kubelet/bootstrap-kubeconfig
+  --node-status-max-images=25 --container-runtime-endpoint=unix:///run/containerd/containerd.sock
+  --runtime-cgroups=/system.slice/containerd.service --registry-qps=10 --registry-burst=20
+KUBELET_CERT: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURvVENDQWdtZ0F3SUJBZ0lRQTc0WkI1eWlvU2ZQYldNOWZkMy9SREFOQmdrcWhraUc5dzBCQVFzRkFEQXYKTVMwd0t3WURWUVFERXlRNE0yRTRabUZpT0Mwd1pqZzNMVFJoTVRrdFlqRXdPQzFoT1RObFpqZzROemt4TjJJdwpIaGNOTWpVd056RTVNRFUxTXpNNVdoY05NekF3TnpFNE1EVTFOVE01V2pBU01SQXdEZ1lEVlFRREV3ZHJkV0psCmJHVjBNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQXVtSVZyNjBIQjFEdXRrbFcKWFk2di9tWEVyZERIOEJkMG0yRWMzVU9vSlBXK0lxbkwza1ZUSG9CR25tenZoN3RHWGtFTzZZMUJ4MU02bWZXTApjQ0VuWXd1T2kxSWJjcXhTRUwxQzNKaVlKa0pIeTBOc1BQM0lTeGlEYnZxWjZ4RGl6a0pkeGtDeEJJK1FyUnNSCkgxcFBaSFE2WkUyRmxmQjNzamh2RVhPWVA2TWs5VnJRcFlndmpiSzNUN0pzY3JEa2ViRTkwN1Ivd2pHM1VyNkQKOVNvWTZJeGlxT0ZlL3RVQXBZdE80Y2JRSmdEeG1FQ2pqRWtmQ2JRL0FHdG96OGMySStlWEZuUTZTQzRxUEcrVQptbW1lOEsvREZBQjhpMk5ZbExQQnh2N0FLRkF0VFlZMmJFTTRDVmJhSzFqcGc4Sy9aL0E2U09HNW1ZUGd2dzg2CjE1QmFzUUlEQVFBQm8xWXdWREFPQmdOVkhROEJBZjhFQkFNQ0JhQXdFd1lEVlIwbEJBd3dDZ1lJS3dZQkJRVUgKQXdJd0RBWURWUjBUQVFIL0JBSXdBREFmQmdOVkhTTUVHREFXZ0JUeStTMXF6RGxCVE1iRkw3NmI4VDhWb2tHSgpkekFOQmdrcWhraUc5dzBCQVFzRkFBT0NBWUVBTSsyTVpKVU4xRW1NQ1NtRGxucHM1aTA5bCt1WFAzQVBQekRBCnVwQzREQVBiTHdZY29HQUhEK2F2LzhsNlFmMC9GcjYvVzF0VmQxaUZjSUhKT0UxcTlpTEUzYmNvZ2wzaTZwNWcKWi9FaWQ0NXZ4UmpnNUZwUlN4UFZ4a1p2YU41d0dyckVJbmplMzZlSXVhUW9NQ0N5Tys3dW01a29aRlZhOVZrLwpzT01PZE5jT1BMZkVGWHd0Wm1qM05TakVhbFBGV045a1MrMktnN0djUzJ5Y2RsTkNENWY4Sm42bTRNVjA5YTNFCnpOcXU1UVNhc2JLbmJPWWVObkpwajhhMWVsZEp6WStVZXhnS2lRc2pzVVVrcWFYQnJpem1LT1pXNjljUEtCNEkKcHNnQUY2NUowdm5BTWtUQWczMndTVHlSQXN1bUxORXBLVGlEMHc3dTFTcW1nTFVEbjlPclJSdUdiZ1dZYzltUwpXTXVqQ1ZGcmJQbkpucVlsMkMvV09xOFB2bnprSjFtT1B0YUhzb2N1T3lJUUVzcXh6bFZzc3dzSjhzQUd6emFXClVNZEgwalNYakdJNldDV3ZBTCtvK1BTT3lSWUxDc3hjRDZHczIrdHFFR0xHK0Exdk9aLzh6K2tGM2hLSlNqalkKSGd2SVBPOWwrZElWbDBLMHBEa0pRZk9wcUMwdQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+KUBELET_HTTP2_PING_TIMEOUT_SECONDS: "5"
+KUBELET_HTTP2_READ_IDLE_TIMEOUT_SECONDS: "10"
+KUBELET_KEY: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb2dJQkFBS0NBUUVBdW1JVnI2MEhCMUR1dGtsV1hZNnYvbVhFcmRESDhCZDBtMkVjM1VPb0pQVytJcW5MCjNrVlRIb0JHbm16dmg3dEdYa0VPNlkxQngxTTZtZldMY0NFbll3dU9pMUliY3F4U0VMMUMzSmlZSmtKSHkwTnMKUFAzSVN4aURidnFaNnhEaXprSmR4a0N4QkkrUXJSc1JIMXBQWkhRNlpFMkZsZkIzc2podkVYT1lQNk1rOVZyUQpwWWd2amJLM1Q3SnNjckRrZWJFOTA3Ui93akczVXI2RDlTb1k2SXhpcU9GZS90VUFwWXRPNGNiUUpnRHhtRUNqCmpFa2ZDYlEvQUd0b3o4YzJJK2VYRm5RNlNDNHFQRytVbW1tZThLL0RGQUI4aTJOWWxMUEJ4djdBS0ZBdFRZWTIKYkVNNENWYmFLMWpwZzhLL1ovQTZTT0c1bVlQZ3Z3ODYxNUJhc1FJREFRQUJBb0lCQUF4ZXBSelBLWGZCVmM1dwpTSlNWK3pVeGtOK09TeTZ5aDlFbUhWSE1BelZNdisweUFxOUNQNVYzSXZpeHR5WDFkbUtjQTc3WldxTzljTmExCjlxYWU5S3U4b1IyNitjcGZDR1ZIQWxCOHFpQmo1cnJsUXlJN0g1ZG9UWlRJZWYyaFZjUWxvRzZmYllBbGZROFkKREVkZDZZWDd0c0pnYUx5K1JGdG1KbXpzbEk2b2lxak1zQ1FONnFhRjZlNEVKSTd1MzVIL05raGNmdS82cXhWVgpSV1VmdGJNWkNrUnlZY20wcUNJbHJpdFprdjkxeTN3ZFVZU09qRjVmb3ZDVW5qKzJ1NExDazFLSGJYeUtITk00CjBwNHp2Rk9yb21TZUw5OXFib3AxbWVuVFRUUWg5cmdNMldZL1RsbkhhTlVXWGxKTmM1NnRKKyt3OUc5VHdiR2YKTmc2TXVZY0NnWUVBNTRNVHphNlJKdlRXV2F6aGwyOXZhZEUxZDRIaXFFU2lKcHJIVWU5WkRiNjV0KzlhWTlBWQpORnV0R2VHTFV4K2s1WG4zaVlySStCMUtXb21vbHNBaHZSUkxtTzRmUnZVUzlhbG1YQlBrK1AxaFB3RmtFTkl2CkY2b1ZsQ2ozU1ZXYVZlR2thVkZtam1ZV0JNUW9nT1orbWV2L2wwMU9ia05CTThBOFplcGVnYThDZ1lFQXpoai8KOGVHK1Y0ZENPSjV0Tmk2Rkd5UHJqc2lNU01OTTcyUDhHTGhpTWpuK25LRVFNWGtxZFcwNUNPS3plbC9PTkZLOQpNSjFLeGRmSXFlcmlGWFp4R3llUEtEUjRuZnZCa3RnWXJpYUFRdnpCYmw1eHFWZE9jcGsxdHNKY1pNSDhKOExICjZDeHl2anVYRlIzSVBJeXVpUjlBdkIrdzFVKzNUT04xNHE4TjRaOENnWUJENUZHamFNVVNhb3lOb2NCS1c1aU4KckplRVkyZW50dkRpWjFONmVMbGg2WU9uS0I4VzFFaTAyZ21xWkZVcVhFWk1NWGRoTTN6NkhnVFhCaldWZCtTdApBVTJtSEhhNXBWY1pDY09GenlPL3pQWit0cGEweEI2aFR2U2pEVnh2ZWhZWGgyTmlxMGRyRFE3NStOaHo3S1JGCjJVcU1BVlMxeXkxTTB0d2pleGFaNndLQmdCVHFicGNpbk1tUFBZWTNkY2ZvNHJORmF2TjdvTmtGa1BvK2dHZ1YKMWtsWW4yRlA2eS9LSnlmeHBMY2xJcWZKcjBpYUdQOGxCMkNhckkrcCtiWEo1bUttR2g0dmJRcERjWHF3bVppYQo2YXRpc1ZLOUhQWGRtV1dCN1BTV053QTJ1NXRoWmg1RzNJSTMwL1pkcG1PV3QyUE5HeW04WVpyVVV6cm5YcUJaCnVhUHJBb0dBRjRFbWZ5bkJpQkhsY2lrSFhLRGdEMzNPOEhCTkw1Njk5dU1obGk4b3VBdnFOc0d3WGhHM05Ka0QKN1RRSFVkaVh3TU5rTFFYcjNLUGl0ZHZOWWxQcFhFWnJ6UE5ZK2NzVytuVmtMWjhvUnMwREhKR1IydGxyWXJyKwpvdHByVFptT3UwL1d0YlUxL2VySlBPSGw0UFl6UkdsMnRlOVJ6VDB4UHA2WGIvdVpzUTA9Ci0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
+KUBELET_VERSION: v1.33.4-gke.1172000
+KUBERNETES_MASTER: "false"
+KUBERNETES_MASTER_NAME: 10.156.0.96
+LOAD_IMAGE_COMMAND: ctr -n=k8s.io images import
+LOGGING_DESTINATION: ""
+LOGGING_STACKDRIVER_RESOURCE_TYPES: ""
+MONITORING_FLAG_SET: "true"
+NETWORK_POLICY_PROVIDER: calico
+NETWORK_PROVIDER: cni
+NODE_BFQ_IO_SCHEDULER_IO_WEIGHT: "1200"
+NODE_LOCAL_SSDS_EXT: ""
+NODE_PROBLEM_DETECTOR_TOKEN: fOvr_gKqGPiSKN-13Ht-cblWdE3U9ilkCybnJgt4cb0=
+NON_MASQUERADE_CIDR: 0.0.0.0/0
+REMOUNT_VOLUME_PLUGIN_DIR: "true"
+RENDERED_INSTALLABLES: '{}'
+REQUIRE_METADATA_KUBELET_CONFIG_FILE: "true"
+SALT_TAR_HASH: ""
+SALT_TAR_URL: https://storage.googleapis.com/gke-release-eu/kubernetes/release/v1.33.4-gke.1172000/kubernetes-salt.tar.gz,https://storage.googleapis.com/gke-release/kubernetes/release/v1.33.4-gke.1172000/kubernetes-salt.tar.gz,https://storage.googleapis.com/gke-release-asia/kubernetes/release/v1.33.4-gke.1172000/kubernetes-salt.tar.gz
+SERVER_BINARY_TAR_HASH: 00b0e3e6dbb41e29d37cbb3ee8243f36b43f83aebe8ceebcf7c44531c27faf86f5d14c00fa59f029e522f522ddc4da7d023d932abd7ff6c5b170ec0ef574b2e5
+SERVER_BINARY_TAR_URL: https://storage.googleapis.com/gke-release-eu/kubernetes/release/v1.33.4-gke.1172000/kubernetes-server-linux-amd64.tar.gz,https://storage.googleapis.com/gke-release/kubernetes/release/v1.33.4-gke.1172000/kubernetes-server-linux-amd64.tar.gz,https://storage.googleapis.com/gke-release-asia/kubernetes/release/v1.33.4-gke.1172000/kubernetes-server-linux-amd64.tar.gz
+SERVICE_CLUSTER_IP_RANGE: 34.118.224.0/20
+STACKDRIVER_ENDPOINT: https://logging.googleapis.com
+STORAGE_ENDPOINT: https://storage.googleapis.com
+SYSCTL_OVERRIDES: ""
+VOLUME_PLUGIN_DIR: /home/kubernetes/flexvolume
+ZONE: europe-west3-a
+
+══╣ Service Accounts
+  Name: 96293282862-compute@developer.gserviceaccount.com/
+  Email: 96293282862-compute@developer.gserviceaccount.com
+  Aliases: default
+  Identity:
+  Scopes: https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/userinfo.email
+  Token: {"access_token":"ya29.c.c0ASRK0GZwHoHdXk1hj1D6kvm78fyfi0X1AP9ZekvG2mR5tkbdhc2XnZFBfvoRpU8UyHehVsa1RpFbD6ZsKRIr2Su2kJtMV7dM5HylptR0XglCcAps-RqCUWdHWJFCMFRip1zWXXnxUyjslM9vWiTF4djyRo3CRjX-dxY5yVUJY1f-5kL19eSots5CgCuTpDmUEVIfCEX8vmFvxsNdPPmJW7dxyZiTMN4qww2lhf8Gi-LQz4pqoa2fz-EEourt0RUHa6JwuuZdBuOfQdPqX66TIFWfFDCYT9qtelUjp_cTpk3cCA7vhHl9ZUe-actLXn99W2ai3nVHdOdw-acxu9iu130Vw358Pqs0JY2vHNnmnVPK0SwxNN9yLBTxChOmCVsYV-kCAqYAeuskvvFt0osG412CqRyj3ct8oXe4IdedX8Xg15h8MB_5j7I113v7RiUbe-3wgq0a5njcYz_rOxSe02UWQBdZddXj-nxyjYV7kxeuoauOIxUti7g3Q1imruUiMU92mk3--5vxB__qfvh3olzx7mrJaB-p-UJX4tQOInUrVc6e1wzMqOObZ_u1WvSvtkv1B1JYuBpqmeRFbzZhwnBRk27h1YQ0nms2_jserbfFrOWidvkr3rUftky7XpBe8fvXB6w1p-OtQZjloX1w6U-SboF5FZjr5o50BngrInnXF0YcluWavxFYMOht6W6VxOF8MFBdnmVlsitJB1MkyS8BeOSSuOhljOFxt4cjFBhlaa6SU8b8QYj_MnhIhJokg-bxa1VaxBjmupqtn0j5rhdVb5McUIBZsgB_-mIRX29S1Ilm37ncZgMpMeQmgxumMUrStm3a5fZxnQBj3FwXVwao9Ot--6i98r0jktQqi4yM8Y6plsxS1yI8Fo2dUX9XBY-2dvnBffZiRSmzickx8s-Ry_o7qvOt0WZyS7RZqlxhOzX9jkx4IxjuXW6BlnO-v1YX8IeXoYSkRWl2VwUhh-rvhu3r4opymetv_QezVl5MR1vWc-tygW_","expires_in":2694,"token_type":"Bearer"}
+  ==============
+  Name: default/
+  Email: 96293282862-compute@developer.gserviceaccount.com
+  Aliases: default
+  Identity:
+  Scopes: https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/userinfo.email
+  Token: {"access_token":"ya29.c.c0ASRK0GZwHoHdXk1hj1D6kvm78fyfi0X1AP9ZekvG2mR5tkbdhc2XnZFBfvoRpU8UyHehVsa1RpFbD6ZsKRIr2Su2kJtMV7dM5HylptR0XglCcAps-RqCUWdHWJFCMFRip1zWXXnxUyjslM9vWiTF4djyRo3CRjX-dxY5yVUJY1f-5kL19eSots5CgCuTpDmUEVIfCEX8vmFvxsNdPPmJW7dxyZiTMN4qww2lhf8Gi-LQz4pqoa2fz-EEourt0RUHa6JwuuZdBuOfQdPqX66TIFWfFDCYT9qtelUjp_cTpk3cCA7vhHl9ZUe-actLXn99W2ai3nVHdOdw-acxu9iu130Vw358Pqs0JY2vHNnmnVPK0SwxNN9yLBTxChOmCVsYV-kCAqYAeuskvvFt0osG412CqRyj3ct8oXe4IdedX8Xg15h8MB_5j7I113v7RiUbe-3wgq0a5njcYz_rOxSe02UWQBdZddXj-nxyjYV7kxeuoauOIxUti7g3Q1imruUiMU92mk3--5vxB__qfvh3olzx7mrJaB-p-UJX4tQOInUrVc6e1wzMqOObZ_u1WvSvtkv1B1JYuBpqmeRFbzZhwnBRk27h1YQ0nms2_jserbfFrOWidvkr3rUftky7XpBe8fvXB6w1p-OtQZjloX1w6U-SboF5FZjr5o50BngrInnXF0YcluWavxFYMOht6W6VxOF8MFBdnmVlsitJB1MkyS8BeOSSuOhljOFxt4cjFBhlaa6SU8b8QYj_MnhIhJokg-bxa1VaxBjmupqtn0j5rhdVb5McUIBZsgB_-mIRX29S1Ilm37ncZgMpMeQmgxumMUrStm3a5fZxnQBj3FwXVwao9Ot--6i98r0jktQqi4yM8Y6plsxS1yI8Fo2dUX9XBY-2dvnBffZiRSmzickx8s-Ry_o7qvOt0WZyS7RZqlxhOzX9jkx4IxjuXW6BlnO-v1YX8IeXoYSkRWl2VwUhh-rvhu3r4opymetv_QezVl5MR1vWc-tygW_","expires_in":2694,"token_type":"Bearer"}
+
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+17 *	* * *	root	cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.daily; }
+47 6	* * 7	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.weekly; }
+52 6	1 * *	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.monthly; }
+*/10 * * * * root /usr/sbin/logrotate -f /etc/logrotate.d/app
+
+
+Found: /app/.gnupg
+total 16
+drwx------ 2 blog blog 4096 Sep 13 01:54 .
+drwxr-xr-x 1 blog blog 4096 Sep 13 01:54 ..
+-rw------- 1 blog blog   32 Sep 13 01:54 pubring.kbx
+-rw------- 1 blog blog 1200 Sep 13 01:54 trustdb.gpg
+
+
+╔══════════╣ Interesting writable files owned by me or writable by everyone (not in Home) (max 200)
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#writable-files
+/app
+/dev/full
+/dev/mqueue
+/dev/null
+/dev/random
+/dev/shm
+#)You_can_write_even_more_files_inside_last_directory
+
+/entrypoint.sh
+/run/lock
+/run/secrets/kubernetes.io/serviceaccount
+/tmp
+/tmp/bad.conf
+/tmp/index.html
+/tmp/linpeas.sh
+/tmp/root.conf
+/usr/local/bin/cleanup.sh
+/var/log/app.log
+/var/tmp
+
+╔══════════╣ Backup folders
+drwxr-xr-x 2 root root 4096 Mar  7  2025 /var/backups
+
+
+SHELL=/bin/sh
+SUDO_GID=0
+HOSTNAME=c-d355-c9822t-l3398-rocket-7774488866-j7sdq
+SUDO_COMMAND=/usr/local/bin/python /app/app.py
+SUDO_USER=root
+PWD=/run/secrets/kubernetes.io/serviceaccount
+LOGNAME=blog
+HOME=/app
+LANG=C.UTF-8
+WERKZEUG_SERVER_FD=3
+TERM=unknown
+USER=blog
+SHLVL=1
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+SUDO_UID=0
+MAIL=/var/mail/blog
+OLDPWD=/run/secrets/kubernetes.io/serviceaccount

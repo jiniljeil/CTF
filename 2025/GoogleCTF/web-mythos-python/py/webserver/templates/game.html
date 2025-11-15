@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>MYTHOS</title>
+    <script>
+        async function make_choice(choice) {
+            const url = "/play"
+
+            try {
+                const resp = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        choice: choice
+                    })
+                })
+
+                if (!resp.ok) {
+                    throw new Error(`Response status: ${resp.status}`);
+                }
+                document.location = "/play";
+            } catch (e) {
+                console.error(e.message);
+            }
+        }
+    </script>
+
+    <script>
+        async function keep_score() {
+            const elem = document.getElementById("score");
+            const url = "/score";
+
+            try {
+                const resp = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({})
+                })
+
+                if (!resp.ok) {
+                    throw new Error(`Response status: ${resp.status}`);
+                }
+                const resp_score = await resp.json();
+                const item_score = Object.keys(resp_score["items"]).length;
+                
+                elem.innerHTML = `CURRENT SCORE: ${item_score}`;
+            } catch (e) {
+                console.error(e.message);
+            }
+        }
+    </script>
+</head>
+
+<body onload="keep_score()">
+    <h1>{{ev_title}}</h1>
+    <br>
+    <br>
+    <h2>{{ev_desc}}</h2>
+
+    {% for item in ev_choice %}
+    <li>
+        <div onclick="make_choice('{{item.id}}');" choice="{{item.id}}">{{ item.desc }}</div>
+        <br>
+    </li>
+    {% endfor %}
+
+    <div id="score"> </div>
+</body>
+
+</html>

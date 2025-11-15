@@ -1,0 +1,37 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: ./nginx/
+    container_name: line_linectf2024_nginx
+    restart: always  
+    image: line_linectf2024_nginx
+    volumes:
+      - './nginx/log:/var/log/nginx'
+    ports:
+      - "80:80" # in -> out
+    networks:
+      - line_linectf2024-frontend
+      - line_linectf2024-internal
+    depends_on:
+      - app
+  app:
+    container_name: linectf-2024-chal-g0tcha-g0tcha-doggy
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - JAR_VERSION=0.0.1-SNAPSHOT
+    restart: always
+    networks:
+      - line_linectf2024-internal
+
+networks:
+    line_linectf2024-frontend:
+      ipam:
+        driver: default
+        config:
+          - subnet: 172.27.0.0/16
+    line_linectf2024-internal:
+      driver: bridge
+      internal: true

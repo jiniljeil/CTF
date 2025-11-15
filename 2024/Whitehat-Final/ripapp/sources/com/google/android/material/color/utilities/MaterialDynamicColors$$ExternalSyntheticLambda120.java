@@ -1,0 +1,10 @@
+package com.google.android.material.color.utilities;
+
+import java.util.function.Function;
+
+/* compiled from: D8$$SyntheticClass */
+public final /* synthetic */ class MaterialDynamicColors$$ExternalSyntheticLambda120 implements Function {
+    public final Object apply(Object obj) {
+        return MaterialDynamicColors.lambda$secondaryFixed$118((DynamicScheme) obj);
+    }
+}

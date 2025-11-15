@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  chart-viewer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: chart-viewer:latest
+    container_name: chart-viewer
+    ports:
+      - "3000:3000"

@@ -1,0 +1,53 @@
+FROM php:7.4-apache
+
+ENV user=losevanni
+ENV MYSQL_ROOT_PASSWORD='test'
+ENV MYSQL_DATABASE='cmsmaindb'
+ENV MYSQL_USER='cmsuser'
+ENV MYSQL_PASSWORD='test'
+
+# 필요한 패키지 설치 및 PHP 확장 설치
+RUN apt-get update && apt-get install -y \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip \
+    git \
+    curl \
+    mariadb-server mariadb-client \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo pdo_mysql mysqli gd \
+    && a2enmod rewrite \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN chown root:root /bin/rm && chmod 700 /bin/rm
+RUN chown root:root /bin/echo && chmod 700 /bin/echo
+RUN chown root:root /bin/chmod && chmod 700 /bin/chmod
+RUN chown root:root /bin/chown && chmod 700 /bin/chown
+RUN chown root:root /bin/sed && chmod 700 /bin/sed
+RUN chown root:root /usr/bin/awk && chmod 700 /usr/bin/awk
+RUN chown root:root /usr/bin/perl && chmod 700 /usr/bin/perl
+RUN chown root:root /usr/bin/tr && chmod 700 /usr/bin/tr
+RUN chown root:root /usr/bin/tee && chmod 700 /usr/bin/tee
+RUN chown root:root /bin/dd && chmod 700 /bin/dd
+
+# 작업 디렉토리 설정
+WORKDIR /var/www/html
+# 웹사이트 소스 코드 복사
+COPY . .
+# .sh 파일 제거
+# 업로드 디렉토리 권한 설정
+RUN mkdir /var/www/html/uploads
+RUN chmod 755 /var/www/html/uploads && \
+chown -R www-data:www-data /var/www/html/
+RUN chmod +x ./startdb.sh && ./startdb.sh && rm ./startdb.sh
+RUN rm *.sh
+
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+EXPOSE 80
+
+CMD ["/start.sh"]

@@ -1,0 +1,15 @@
+version: '3.0'
+services:
+  web:
+    container_name: trick_web
+    build: ./src
+    ports:
+      - "8188:8080"
+    links:
+      - bot
+  bot:
+    container_name: trick_bot
+    build: ./bot
+    restart: always
+    environment: 
+      - TZ=Asia/Seoul 

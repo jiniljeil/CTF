@@ -1,0 +1,21 @@
+{
+  "name": "beatmap-list",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "sweetalert2": "^11.0.0",
+    "localforage": "^1.10.0",
+    "jszip": "^3.10.1",
+    "osu-parsers": "^4.1.7",
+    "osu-standard-stable": "^5.0.1"
+  }
+}

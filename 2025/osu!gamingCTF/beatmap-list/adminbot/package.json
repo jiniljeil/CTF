@@ -1,0 +1,16 @@
+{
+  "name": "adminbot",
+  "version": "1.0.0",
+  "main": "adminbot_test.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "jszip": "^3.10.1",
+    "puppeteer": "^24.26.1"
+  }
+}

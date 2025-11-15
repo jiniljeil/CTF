@@ -1,0 +1,32 @@
+# Node modules
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Composer dependencies
+vendor
+
+# Laravel environment files
+.env.example
+
+# Log and cache files
+storage/logs
+storage/framework/cache
+storage/framework/sessions
+storage/framework/views
+bootstrap/cache
+
+# Docker specific files
+docker-compose.override.yml
+docker-compose.yml
+Dockerfile
+
+# IDE and system files
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+.DS_Store
+.idea/
+.vscode/

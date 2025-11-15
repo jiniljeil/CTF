@@ -1,0 +1,8 @@
+version: '3'
+services:
+  web_sandbox:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports: 
+      - "24916:8000"

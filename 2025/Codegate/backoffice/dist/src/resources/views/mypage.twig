@@ -1,0 +1,48 @@
+{% include 'components.header' %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">My Page</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header">
+            {{ user_info['name'] }} ({{ user_info['department'] }})
+        </div>
+        <div class="card-body">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Name</span>
+                <input type="text" class="form-control" value="{{ user_info['name'] }}" aria-label="Username" id="name" aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2">Position (Department)</span>
+                <input type="text" class="form-control" value="{{ user_info['position'] }} ({{ user_info['department'] }})" aria-label="position" aria-describedby="basic-addon2">
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2">Phone Number</span>
+                <input type="text" class="form-control" value="{{ user_info['phone_number'] }}" aria-label="Phone Number" id="phone_number" aria-describedby="basic-addon2">
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2">Email</span>
+                <input type="text" class="form-control" value="{{ user_info['email'] }}" aria-label="Email" aria-describedby="basic-addon2">
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Salary</span>
+                <input type="text" class="form-control" value="{{ user_info['salary'] }}" aria-label="Salary" id="salary">
+                <span class="input-group-text">₩ (KRW)</span>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Birth-day</span>
+                <input type="text" class="form-control" value="{{ user_info['birthday'] }}" aria-label="Birthday" id="birthday">
+                <span class="input-group-text">RRN</span>
+                <input type="text" class="form-control" value="{{ user_info['rrn'] }}" aria-label="RRN">
+            </div>
+
+            <button type="button" id="user_update" class="btn btn-success" data-token="{{ jwt_token }}">Update</button>
+        </div>
+    </div>
+</div>
+{% include 'components.footer' %}

@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  sweet-treat:
+    container_name: sweet-treat
+    build:
+      dockerfile: Dockerfile
+    links:
+      - xssbot
+    ports:
+      - 8080:8080
+
+  xssbot:
+    image: ghcr.io/downunderctf/docker-vendor/xssbot:chrome
+    privileged: true
+    volumes:
+      - ./cookiejar:/var/marvin/auth/cookiejar
+    environment:
+      NODE_ENVIRONMENT: development
+      OUTBOUND_AUTH_METHOD: cookiejar

@@ -1,0 +1,92 @@
+version: "3"
+
+services:
+  external:
+    build:
+      context: ./Go
+      dockerfile: Dockerfile
+    container_name: external-chat-for-user
+    restart: always
+    environment:
+      - DB_HOST=postgres-server-for-user
+      - DB_NAME=db
+      - DB_PASSWORD=codegate2024foruser
+      - DB_PORT=5432
+      - DB_USER=codegate2024
+    ports:
+      - "7777:7777"
+    networks:
+      internal_codegate:
+        ipv4_address: 173.19.10.5
+    depends_on:
+      - postgresql
+
+  internal:
+    build:
+      context: ./Flask
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    restart: always
+    container_name: internal-flask-for-user
+    environment:
+      # mysql
+      - DATABASE_URL=mysql://codegate2024_guest:welcomeuser!@173.19.10.8:3306/management?charset=utf8
+      - MYSQL_IP=mysql-server-for-user
+      # postgresql
+      - DB_HOST=postgres-server-for-user
+      - DB_NAME=db
+      - DB_PASSWORD=codegate2024foruser
+      - DB_PORT=5432
+      - DB_USER=codegate2024
+      # memcache
+      - MEMCACHE_IP=127.0.0.1
+      # admin service
+      - ADMIN_SERVICE_IP=173.19.10.10
+    ports:
+      - "5000:5000"
+      - "11211:11211"
+    networks:
+      internal_codegate:
+        ipv4_address: 173.19.10.4
+    depends_on:
+      - postgresql
+      - mysql
+
+  mysql:
+    build:
+      context: ./Mysql
+      dockerfile: Dockerfile
+    # image: mysql:latest
+    container_name: mysql-server-for-user
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=helloworld!@#$$%
+      - MYSQL_DATABASE=management
+      - MYSQL_USER=codegate2024_guest
+      - MYSQL_PASSWORD=welcomeuser!
+    ports:
+      - "3306:3306"
+    networks:
+      internal_codegate:
+        ipv4_address: 173.19.10.8
+
+  postgresql:
+    restart: always
+    image: postgres:latest
+    container_name: postgres-server-for-user
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: codegate2024
+      POSTGRES_PASSWORD: codegate2024foruser
+    ports:
+      - "5432:5432"
+    networks:
+      internal_codegate:
+        ipv4_address: 173.19.10.6
+
+networks:
+  internal_codegate:
+    ipam:
+      driver: default
+      config:
+        - subnet: 173.19.10.0/24

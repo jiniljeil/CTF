@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In The Shadows</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🌙 In The Shadows</h1>
+        </header>
+
+        <main>
+            <div id="shadow-host">
+                <div class="shadow-container">
+                    <div class="marquee" id="marquee-text">{{ note_text }}</div>
+                </div>
+                <script>
+                    (function () {
+                        const shadowHost = document.getElementById('shadow-host');
+                        const shadowRoot = shadowHost.attachShadow({ mode: 'closed' });
+                        const note_text = shadowHost.querySelector('#marquee-text').textContent;
+                        shadowHost.querySelector('.shadow-container').remove();
+
+                        shadowRoot.innerHTML = `
+                            <style>
+                                .shadow-container {
+                                    background: #1a1a1a;
+                                    border: 2px solid #333;
+                                    border-radius: 8px;
+                                    padding: 20px;
+                                    margin: 20px 0;
+                                    overflow: hidden;
+                                    height: 60px;
+                                    position: relative;
+                                }
+                                .marquee {
+                                    position: absolute;
+                                    white-space: nowrap;
+                                    font-family: 'Courier New', monospace;
+                                    font-size: 18px;
+                                    font-weight: bold;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    left: 100%;
+                                    max-width: none;
+                                    background: linear-gradient(45deg, #ff6b00, #ff0000, #ffff00, #ff6b00);
+                                    background-size: 400% 400%;
+                                    -webkit-background-clip: text;
+                                    background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                    animation: flameFlicker 0.8s ease-in-out infinite alternate,
+                                               flameGlow 2s ease-in-out infinite;
+                                    text-shadow: 0 0 10px rgba(255, 107, 0, 0.8),
+                                                 0 0 20px rgba(255, 0, 0, 0.6),
+                                                 0 0 30px rgba(255, 255, 0, 0.4);
+                                }
+                                
+                                @keyframes flameFlicker {
+                                    0% { 
+                                        background-position: 0% 50%;
+                                        transform: translateY(-50%) scale(1);
+                                    }
+                                    100% { 
+                                        background-position: 100% 50%;
+                                        transform: translateY(-50%) scale(1.02);
+                                    }
+                                }
+                                
+                                @keyframes flameGlow {
+                                    0%, 100% {
+                                        text-shadow: 0 0 10px rgba(255, 107, 0, 0.8),
+                                                     0 0 20px rgba(255, 0, 0, 0.6),
+                                                     0 0 30px rgba(255, 255, 0, 0.4);
+                                    }
+                                    50% {
+                                        text-shadow: 0 0 15px rgba(255, 107, 0, 1),
+                                                     0 0 25px rgba(255, 0, 0, 0.8),
+                                                     0 0 35px rgba(255, 255, 0, 0.6);
+                                    }
+                                }
+                            </style>
+                            <div class="shadow-container">
+                                <div class="marquee" id="marquee-text">
+                            </div>
+                        `;
+     
+
+                        const marqueeElement = shadowRoot.getElementById('marquee-text');
+                        let position = 100;
+                        let frameCount = 0;
+
+                        const displayConfig = {
+                            element: marqueeElement,
+                            text: note_text,
+                            speed: 0.5,
+                            resetAt: 100,
+                            hideAt: -100
+                        };
+
+                        function calculateFlameIntensity(frame) {
+                            const baseIntensity = 0.8;
+                            const flicker = Math.sin(frame * 0.1) * 0.2;
+                            const randomFlicker = (Math.random() - 0.5) * 0.1;
+                            return Math.max(0.3, baseIntensity + flicker + randomFlicker);
+                        }
+
+                        function updateDisplay() {
+                            const { element, text, speed, resetAt, hideAt } = displayConfig;
+
+                            if (frameCount % 3 === 0) {
+                                element.innerText = text;
+                            }
+
+                            // Apply flame intensity effects
+                            const intensity = calculateFlameIntensity(frameCount);
+                            element.style.filter = `brightness(${intensity}) saturate(1.2)`;
+
+                            element.style.left = position + '%';
+                            position -= speed;
+
+                            if (position < hideAt) { position = resetAt; } frameCount++; requestAnimationFrame(updateDisplay);
+                        }
+                        updateDisplay();
+                    })(); </script>
+            </div>
+
+            <div class="sandbox-container">
+                <h2>Code Playground</h2>
+                <p>Enter your JavaScript code below:</p>
+
+                <textarea id="code-input">{{ code }}</textarea>
+
+                <div class="controls">
+                    <button onclick="runCode()">Run Code</button>
+                    <button onclick="shareCode()">Share Code</button>
+                    <button onclick="clearCode()">Clear</button>
+                </div>
+
+                <canvas id="fractal-canvas" width="600" height="400"></canvas>
+            </div>
+
+
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+
+</html>

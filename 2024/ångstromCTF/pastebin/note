@@ -1,0 +1,20 @@
+>>> f'password-{secrets.token_hex}'.encode()
+b'password-<function token_hex at 0x7fbe359f0dc0>'
+b'password-<function token_hex at 0x7b5372f00480>'
+7B5372F00480
+
+https://pastebin.web.actf.co/view?id=0
+Incorrect parameter &password=1797c2...
+
+password-<function token_hex at 0x7b53722bd436> 1797c2a5536b66caeb1e43b67caa84b6
+
+password-<function token_hex at 0x7b5375bcc449> 1797c23c64743f92b60006b65ac76041
+
+password-<function token_hex at 0x7b53781e8d22> 1797c26ee6c3786188292cc0b096a893
+
+password-<function token_hex at 0x7b53789a9714> 1797c28c6de75aa270ebeca5d23c13ba
+
+password-<function token_hex at 0x7b536f0a7e41> 1797c20bafbf9ef804afa75696d21b81
+
+# password-<function token_hex at 0x7b5371fb5597> 2f3a2215473d9bc142cf644ce944a35c
+# password-<function token_hex at 0x7b5371fb5598> e9e868fb49a6511320e137724f4f4922

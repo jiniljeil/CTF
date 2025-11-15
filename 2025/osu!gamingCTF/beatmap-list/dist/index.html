@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en">
+
+<head>
+  <meta name="theme-color" content="#5c6970" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- NOTE: looking at the domain str.lc is not part of the challenge -->
+  <link rel="stylesheet" media="all" href="https://osu-assets.str.lc/assets/css/app.1165affa.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
+  <title>beatmap-list</title>
+  <style>
+    body {
+      --base-hue-default: 200;
+      --base-hue-override: 200;
+    }
+
+    .beatmapset-panel__cover-col--info {
+      margin-right: 0px;
+    }
+
+    .beatmapsets__content {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      gap: 1rem;
+    }
+
+    .beatmapset-panel {
+      cursor: pointer;
+    }
+
+    .nav2__menu-link-main {
+      color: white !important;
+    }
+
+    .nav2__menu-link-main:hover {
+      color: hsla(0, 0%, 100%, .7) !important;
+    }
+
+    @media (max-width: 900px) {
+      .nav2-header {
+        position: relative !important;
+      }
+    }
+  </style>
+  <script type="module" crossorigin src="/index.js"></script>
+  <link rel="modulepreload" crossorigin href="/modulepreload-polyfill.js">
+</head>
+
+<body class="t-section osu-layout osu-layout--body osu-layout--body-lazer">
+  <div class="nav2-header">
+    <div class="nav2-header__body">
+      <div class="nav2-header__menu-bg js-nav2--menu-bg" data-visibility="hidden"></div>
+      <div class="nav2-header__triangles"></div>
+      <div class="nav2-header__transition-overlay"></div>
+      <div class="osu-page">
+        <div class="nav2 js-nav-button">
+          <div class="nav2__colgroup nav2__colgroup--menu js-nav-button--container">
+            <div class="nav2__col nav2__col--logo">
+              <a href="/" class="nav2__logo-link">
+                <div class="nav2__logo nav2__logo--bg"></div>
+                <div class="nav2__logo"></div>
+              </a>
+            </div>
+            <div class="nav2__col nav2__col--menu">
+              <a class="nav2__menu-link-main js-menu" href="/">
+                <span class="u-relative">
+                  home
+                  <span class="nav2__menu-link-bar u-section--bg-normal"></span>
+                </span>
+              </a>
+              <a class="nav2__menu-link-main js-menu upload-link" href="#">
+                upload
+              </a>
+              <a class="nav2__menu-link-main js-menu clear-link" href="#">
+                clear
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="osu-layout__section osu-layout__section--full">
+    <div class="header-v4">
+      <div class="header-v4__container header-v4__container--main">
+        <div class="header-v4__bg-container">
+          <div class="header-v4__bg"></div>
+        </div>
+        <div class="header-v4__content">
+          <div class="header-v4__row header-v4__row--title">
+            <div class="header-v4__icon"></div>
+            <div class="header-v4__title">beatmap-list</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="beatmapset-container"></div>
+    <div class="osu-page osu-page--beatmapsets-search-header">
+      <div class="beatmapsets-search">
+        <div class="beatmapsets-search__cover"></div>
+        <form class="search-form">
+          <div class="beatmapsets-search__input-container">
+            <input class="beatmapsets-search__input js-beatmapsets-search-input" name="search"
+              placeholder="type in keywords..." type="search" value="" />
+            <div class="beatmapsets-search__icon">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="osu-page">
+      <div class="beatmapsets">
+        <div class="beatmapsets__content"></div>
+      </div>
+    </div>
+  </div>
+
+  <template class="beatmapset-template">
+    <div class="osu-page osu-page--generic-compact">
+      <div class="beatmapset-header">
+        <div class="beatmapset-header__cover">
+          <div class="beatmapset-cover beatmapset-cover--full"></div>
+        </div>
+        <div class="beatmapset-header__box beatmapset-header__box--main">
+          <div class="beatmapset-header__beatmap-picker-box">
+            <div class="beatmapset-beatmap-picker">
+              <template class="beatmap-difficulty-circle-template">
+                <a class="beatmapset-beatmap-picker__beatmap beatmapset-beatmap-picker__beatmap" href="#">
+                  <div class="beatmap-icon beatmap-icon--beatmapset">
+                    <i class="fal fa-extra-mode-osu"></i>
+                  </div>
+                </a>
+              </template>
+            </div>
+            <span class="beatmapset-header__diff-name difficulty-name">DIFFICULTY</span>
+          </div>
+          <span class="beatmapset-header__details-text beatmapset-header__details-text--title">
+            <a class="beatmapset-header__details-text-link title-name" href="#">TITLE NAME</a>
+          </span>
+          <span class="beatmapset-header__details-text beatmapset-header__details-text--artist">
+            <a class="beatmapset-header__details-text-link artist-name" href="#">by ARTIST</a>
+          </span>
+          <div class="beatmapset-mapping">
+            <div class="beatmapset-mapping__content">
+              <div class="beatmapset-mapping__mapper mapper-name">mapped by MAPPER</div>
+            </div>
+          </div>
+          <div class="beatmapset-header__buttons">
+            <button class="btn-osu-big btn-osu-big--beatmapset-header-square" type="button" title="back">
+              <span class="btn-osu-big__content btn-osu-big__content--center">
+                <span class="btn-osu-big__icon">
+                  <span class="fa fa-fw">
+                    <span class="fas fa-arrow-left"></span>
+                  </span>
+                </span>
+              </span>
+            </button>
+            <button class="btn-osu-big btn-osu-big--beatmapset-header-square" type="button" title="delete">
+              <span class="btn-osu-big__content btn-osu-big__content--center">
+                <span class="btn-osu-big__icon">
+                  <span class="fa fa-fw">
+                    <span class="fas fa-trash"></span>
+                  </span>
+                </span>
+              </span>
+            </button>
+            <a class="btn-osu-big btn-osu-big--beatmapset-header osu-direct-url" href="#">
+              <span class="btn-osu-big__content">
+                <span class="btn-osu-big__left">
+                  <span class="btn-osu-big__text-top">osu!direct</span>
+                </span>
+                <span class="btn-osu-big__icon">
+                  <span class="fa fa-fw">
+                    <span class="fas fa-download"></span>
+                  </span>
+                </span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="beatmapset-header__box beatmapset-header__box--stats">
+          <div class="beatmapset-header__status">
+          </div>
+          <div class="beatmapset-stats">
+            <div class="beatmapset-stats__row beatmapset-stats__row--advanced">
+              <table class="beatmap-stats-table">
+                <tbody>
+                  <tr>
+                    <th class="beatmap-stats-table__label">Circle Size</th>
+                    <td class="beatmap-stats-table__bar">
+                      <div class="bar bar--beatmap-stats bar--beatmap-stats-cs circle-size-fill">
+                        <div class="bar__fill"></div>
+                      </div>
+                    </td>
+                    <td class="beatmap-stats-table__value circle-size">CS</td>
+                  </tr>
+                  <tr>
+                    <th class="beatmap-stats-table__label">HP Drain</th>
+                    <td class="beatmap-stats-table__bar">
+                      <div class="bar bar--beatmap-stats bar--beatmap-stats-drain hp-drain-fill">
+                        <div class="bar__fill"></div>
+                      </div>
+                    </td>
+                    <td class="beatmap-stats-table__value hp-drain">HP</td>
+                  </tr>
+                  <tr>
+                    <th class="beatmap-stats-table__label">Accuracy</th>
+                    <td class="beatmap-stats-table__bar">
+                      <div class="bar bar--beatmap-stats bar--beatmap-stats-accuracy">
+                        <div class="bar__fill overall-difficulty-fill"></div>
+                      </div>
+                    </td>
+                    <td class="beatmap-stats-table__value overall-difficulty">OD</td>
+                  </tr>
+                  <tr>
+                    <th class="beatmap-stats-table__label">Approach Rate</th>
+                    <td class="beatmap-stats-table__bar">
+                      <div class="bar bar--beatmap-stats bar--beatmap-stats-ar approach-rate-fill">
+                        <div class="bar__fill"></div>
+                      </div>
+                    </td>
+                    <td class="beatmap-stats-table__value approach-rate">AR</td>
+                  </tr>
+                  <tr>
+                    <th class="beatmap-stats-table__label">Star Rating</th>
+                    <td class="beatmap-stats-table__bar">
+                      <div class="bar bar--beatmap-stats bar--beatmap-stats-stars star-rating-fill">
+                        <div class="bar__fill"></div>
+                      </div>
+                    </td>
+                    <td class="beatmap-stats-table__value star-rating">SR</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template class="beatmapset-panel-template">
+    <div class="beatmapset-panel beatmapset-panel--size-normal">
+      <a class="beatmapset-panel__cover-container" href="#">
+        <div class="beatmapset-panel__cover-col beatmapset-panel__cover-col--play">
+          <div class="beatmapset-cover beatmapset-cover--full"></div>
+        </div>
+      </a>
+      <div class="beatmapset-panel__content">
+        <div class="beatmapset-panel__play-container"></div>
+        <div class="beatmapset-panel__info">
+          <div class="beatmapset-panel__info-row beatmapset-panel__info-row--title title-name">
+            TITLE
+          </div>
+          <div class="beatmapset-panel__info-row beatmapset-panel__info-row--artist artist-name">
+            by ARTIST
+          </div>
+          <div class="beatmapset-panel__info-row beatmapset-panel__info-row--mapper">
+            <div class="u-ellipsis-overflow mapper-name">
+              mapped by MAPPER
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <footer class="no-print footer">
+    <div class="footer__row">
+      <a class="footer__link" href="https://osugaming.sekai.team"> CTF </a>
+    </div>
+    <div class="footer__row">
+      this site is not officially affiliated with osu!
+    </div>
+  </footer>
+  <iframe src="/engine.html" style="display: none" id="engine"></iframe>
+</body>
+
+</html>

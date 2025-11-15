@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "csurf": "^1.11.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "mongoose": "^8.18.0",
+    "mongoose-sequence": "^6.0.1",
+    "node-cache": "^5.1.2",
+    "playwright": "^1.55.0",
+    "pug": "^3.0.3"
+  },
+  "name": "app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

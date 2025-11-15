@@ -1,0 +1,61 @@
+{% include 'components.header' %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">QnA Board</h1>
+    <div class="card shadow mb-4">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="qna-tab" data-bs-toggle="tab" data-bs-target="#qna" type="button" role="tab" aria-controls="QnA" aria-selected="true">QnA</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="write-tab" data-bs-toggle="tab" data-bs-target="#write" type="button" role="tab" aria-controls="Write" aria-selected="false">Write</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="qna" role="tabpanel" aria-labelledby="qna-tab">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="qna_table" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>writer</th>
+                                <th>title</th>
+                                <th>content</th>
+                                <th>attachment</th>
+                                <th>datetime</th>
+                            </tr>
+                            </thead>
+                            <tbody id="qna_data">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="write" role="tabpanel" aria-labelledby="write-tab">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="receiver_email" class="form-label">QnA Title</label>
+                        <input type="email" class="form-control" id="qna_title" placeholder="Qna title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="qna_content" class="form-label">QnA Content</label>
+                        <input type="text" class="form-control" id="qna_content" placeholder="qna_content">
+                    </div>
+                    <div class="mb-3">
+                        <label for="qna_password" class="form-label">Password</label>
+                        <input type=password class="form-control" id="qna_password" placeholder="password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="qna_file" class="form-label">QnA File</label>
+                        <input class="form-control" type="file" id="qna_file">
+                    </div>
+
+                    <button type="button" id="write_qna" class="btn btn-success">Mail Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'components.footer' %}

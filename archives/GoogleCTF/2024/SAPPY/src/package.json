@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-recaptcha": "^5.1.0",
+    "google-closure-compiler": "^20240317.0.0",
+    "google-closure-library": "^20230802.0.0"
+  }
+}

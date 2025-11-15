@@ -1,0 +1,8 @@
+[
+  {
+    "domain": "127.0.0.1",
+    "name": "admin",
+    "value": "only-for-automate-not-very-relevant",
+    "httponly": true
+  }
+]

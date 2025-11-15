@@ -1,0 +1,23 @@
+# Dirsearch started Wed Jan 17 19:01:19 2024 as: /home/ubuntu/dirsearch/dirsearch.py -u http://3.34.190.217:24914/ /home/ubuntu/wordlist/directory-list-2.3-medium.txt
+
+403   280B   http://3.34.190.217:24914/.ht_wsr.txt
+403   280B   http://3.34.190.217:24914/.htaccess.bak1
+403   280B   http://3.34.190.217:24914/.htaccess.orig
+403   280B   http://3.34.190.217:24914/.htaccess.save
+403   280B   http://3.34.190.217:24914/.htaccess_sc
+403   280B   http://3.34.190.217:24914/.htaccess_extra
+403   280B   http://3.34.190.217:24914/.htaccessBAK
+403   280B   http://3.34.190.217:24914/.htaccessOLD
+403   280B   http://3.34.190.217:24914/.htaccessOLD2
+403   280B   http://3.34.190.217:24914/.htaccess.sample
+403   280B   http://3.34.190.217:24914/.htm
+403   280B   http://3.34.190.217:24914/.htaccess_orig
+403   280B   http://3.34.190.217:24914/.htpasswd_test
+403   280B   http://3.34.190.217:24914/.httr-oauth
+403   280B   http://3.34.190.217:24914/.html
+403   280B   http://3.34.190.217:24914/.htpasswds
+200    15B   http://3.34.190.217:24914/check.php
+200     1KB  http://3.34.190.217:24914/index.php
+200     1KB  http://3.34.190.217:24914/index.php/login/
+403   280B   http://3.34.190.217:24914/server-status
+403   280B   http://3.34.190.217:24914/server-status/

@@ -1,0 +1,59 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Behold
+    link(rel="icon" type="image/png" href="/public/stars.png")
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background: url('/public/42.gif') no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .home-container {
+        background-color: rgba(255, 255, 255, 0.85);
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 600px;
+        box-sizing: border-box;
+        text-align: center;
+      }
+      h1 {
+        color: #333;
+        margin-bottom: 1rem;
+      }
+      p {
+        color: #555;
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+      }
+      .btn:hover {
+        background-color: #0056b3;
+      }
+  body
+    .home-container
+      h1 Welcome
+      p After an exhausting trip, it's time to meet your destiny. Forget what you know, for it will not serve you where you're heading. 
+      p We all have struggled enough, fighting to keep our heads where they are.
+      p Ours will not be hunted anymore. Let go of your mind.  
+      a.btn(href="/awaken") I am ready

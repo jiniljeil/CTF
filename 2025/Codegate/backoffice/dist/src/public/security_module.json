@@ -1,0 +1,61 @@
+{
+    "sql_injection": [
+        "SELECT\\s+\\*\\s+FROM",
+        "UNION\\s+SELECT",
+        "INSERT\\s+INTO",
+        "DROP\\s+TABLE",
+        "DELETE\\s+FROM",
+        "OR\\s+1=1",
+        "--",
+        "\\#",
+        "/\\*.*?\\*/"
+    ],
+    "command_injection": [
+        "exec\\(.*?",
+        "system\\(.*?",
+        "popen\\(.*?",
+        "shell_exec\\(.*?",
+        "passthru\\(.*?"
+    ],
+    "xss": [
+        "<script.*?>.*?</script>",
+        "javascript:",
+        "vbscript:",
+        "onerror=",
+        "onload=",
+        "alert\\(.*?\\)",
+        "document\\.cookie",
+        "eval\\(.*?\\)",
+        "setTimeout\\(.*?\\)",
+        "fetch\\(.*?"
+    ],
+    "xxe": [
+        "<!ENTITY\\s+",
+        "SYSTEM\\s+\"file://",
+        "SYSTEM\\s+\"http://",
+        "SYSTEM\\s+\"ftp://",
+        "DOCTYPE\\s+root\\s+\\["
+    ],
+    "ssrf": [
+        "fetch\\(.*?",
+        "http://127\\.0\\.0\\.1",
+        "http://localhost",
+        "http://0\\.0\\.0\\.0",
+        "http://169\\.254\\.169\\.254",
+        "http://metadata\\.google\\.internal"
+    ],
+    "csrf": ["document\\.forms\\[0\\]\\.submit"],
+    "ssti": [
+        "\\{\\{.*?\\}\\}",
+        "\\{%.*?%\\}",
+        "\\$\\{.*?\\}",
+        "\\*args",
+        "\\*kwargs"
+    ],
+    "file_download": [
+        "\\.\\./etc/passwd",
+        "\\.\\./etc/hosts",
+        "\\.\\./etc/shadow",
+        "\\.\\./var"
+    ]
+}

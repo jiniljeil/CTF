@@ -1,0 +1,8 @@
+https://stackoverflow.com/questions/34998859/android-jwt-parsing-payload-claims-when-signed
+https://github.com/jwtk/jjwt/issues/280
+
+Payload
+    eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiJ9.
+    
+Flag
+    LINECTF{337e737f9f2594a02c5c752373212ef7}
